@@ -1,41 +1,62 @@
-# Round-4 update for Tiffany: paste-ready
+# Round 4: update for Tiffany
 
-## Email version
+## Email draft
 
-**Subject:** Poster round 4: how often CHEWS wins, and what happens in the 0–0.05 stratum
+**Subject:** Poster update: when CHEWS improves estimates, and what we still need to check
 
 Hi Tiffany,
 
-Thank you for the comments on the poster. Here is where each one landed.
+Thank you for your feedback. I updated the poster to show more directly when CHEWS gives a better estimate than GCTA. I also ran two follow-up analyses to address your question about genes with very low estimated heritability.
 
-**1. Standard-error comparison (§5A) and split-half table (§8).** Both are unchanged, as you suggested.
+The clearest finding is that **CHEWS performs well when a few variants account for most of a gene's genetic effect. When the effect is spread across many variants, GCTA often performs better.** The new analyses give us some evidence about the low-heritability genes, but that part of the answer is still preliminary.
 
-**2. "Show how frequently CHEWS improves" (§5B).** The MAE-difference panel is now a win-rate heatmap: the % of loci where CHEWS is closer to the truth than GCTA, by sample size and causal-SNP count, on the same colour scale as the §4 heatmap.
-- With one causal SNP, CHEWS is closer on 75–82% of loci at every sample size. What shrinks as n grows is the size of the advantage (MAE 73% lower at n = 100, 58% lower at n = 1,000), not how often it happens.
-- With 20 causal SNPs the ordering reverses: GCTA is closer on 72–77% of loci once n ≥ 300. That row stays on the poster.
-- On "% difference": true h² is not constant in that panel; it pools h² from 0.05 to 0.8. Dividing each error by h² lets the h² = 0.05 fits dominate, and in one cell it even flips the sign. The win rate answers "how often" with no rescaling, and % change in MAE answers "by how much".
+**1. The revised figure shows how often CHEWS is closer to the true value.**
 
-**3. "Is the underestimation in the 0–0.05 stratum good or bad?" (§7).** Real data has no ground truth, so I ran two new GTEx analyses on the same donors, halves and covariates.
-- **Permutation null.** I shuffled genotypes so that every gene's true h² is 0. Constrained GCTA and CHEWS both average 0.013. So GCTA's zero floor is not, on its own, why CHEWS reads lower there. This is now one sentence in §7.
-- **Simulation on the real GTEx genotypes, with known truth.** In the 0-signal, h² < 0.05 cell (9,572 genes), CHEWS was closer to the truth on about 60% of genes (95% CI 59–61%). That held whatever share of genes I assumed truly null: 54–61%. The permutation run suggests about 70% of these genes are truly null, and at that level the figure is about 55%. So the provisional answer is "mildly good".
-- **The caveat.** Before running it, I fixed a check for whether the simulation reproduces the real §7 pattern. It did not pass: the average miss was 0.014 against my limit of 0.010. The miss is almost entirely in the high-h² corner, most likely because the simulated h² only went up to 0.4. So the simulation is not on the poster yet. Re-running with h² up to 0.8 takes about 20 minutes of compute.
+In the simulations, we know the true heritability, so we can compare the two methods directly. I replaced the figure showing their difference in average error with one showing the percentage of simulated cases in which CHEWS has the smaller error.
 
-**Questions for you**
-1. By "bottom-left," did you mean the 0-signal, h² < 0.05 cell? I analysed the whole column either way.
-2. Should I re-run the simulation with the wider h² range before we print, or keep it as follow-up?
-3. I think the results are ready to start the paper. I've attached a draft outline. Could you look at the structure and the "decisions" section at the end?
+- With one causal variant, CHEWS is closer to the truth in **75–82% of cases** across sample sizes from 100 to 1,000. Its average error is 73% lower than GCTA's at 100 individuals and 58% lower at 1,000 individuals.
+- With 20 causal variants, **GCTA is closer in 72–77% of cases** at sample sizes of 300 or more. This result is also shown on the poster so that the conditions favoring each method are clear.
 
-The point-by-point response is in `poster/REVISION4.md`, and the round-4 deck is `XuS_IGVF2026_poster_round4.pptx`.
+On your question about percentages: each part of this figure combines several true heritability values, from 0.05 to 0.8. Expressing every error as a percentage of the true value would give more weight to cases with low heritability. The revised figure answers “how often does CHEWS improve the estimate?” directly. The percentage reduction in average error answers the separate question, “how much does it improve?”
+
+I kept the standard-error comparison and the split-half consistency table as they were, as you suggested.
+
+**2. For the low-heritability genes, lower CHEWS estimates may be helpful, but we cannot yet make that claim for the real data.**
+
+I focused on genes with estimated cis-heritability below 0.05 and no detected independent association signal. This group contains 9,572 genes in the real-data comparison. “No detected signal” does not necessarily mean that a gene has no genetic contribution; weak effects may be difficult to detect.
+
+Because we do not know the true heritability of these genes, I ran two checks:
+
+- **A test with the genotype–expression relationship removed.** I shuffled the donor labels on the genotypes while keeping expression and covariates unchanged. In this no-signal setting, GCTA and CHEWS both gave an average heritability estimate of about **0.013**. This does not support the simple explanation that GCTA's restriction against negative estimates, by itself, explains why its estimates are higher than CHEWS's in the real low-heritability group.
+- **A simulation using the actual GTEx genotypes.** I generated expression values with known genetic contributions, using the same donors, donor split, and adjustment variables as the real analysis. In the simulated group corresponding to those low-heritability genes, CHEWS was closer to the truth in about **60% of cases** (95% confidence interval: 59–61%). When I varied the assumed proportion of genes with no genetic contribution from 0% to 90%, that figure ranged from **54% to 61%**.
+
+The second result is encouraging, but the simulation did not reproduce the overall real-data pattern closely enough to meet the check set before examining its results. Across the gene groups, the average difference between the simulated and observed CHEWS–GCTA gaps was **0.014**, above the allowed **0.010**. Most of the mismatch was among genes with high estimated heritability. The confidence interval around the 60% result does not account for this mismatch between the simulation and real data.
+
+For now, the poster includes the shuffled-data result, and the simulated accuracy result remains exploratory. My answer to “is the lower estimate good or bad?” is: **it looks modestly helpful in the simulation, but we do not yet have enough evidence to say that it is more accurate for these real genes.**
+
+One possible reason for the mismatch is that the simulation only included true heritability values up to 0.4. Extending that range to 0.8 is a useful next check, although it may not resolve the problem. The previous run took about 20 minutes of computing time; the new run may differ. We would keep the same evaluation criteria and clearly report that the simulation design was expanded after reviewing the first result.
+
+**3. I have also drafted an outline for the paper.**
+
+I suggest organizing the paper around when CHEWS improves estimation, when it misses genetic effects, and what the GTEx results can tell us about its practical use. The outline separates the completed findings from the analyses we still need before making stronger claims.
+
+I would appreciate your thoughts on three points:
+
+1. When you referred to the “bottom-left” group, did you mean genes with no detected signal and estimated heritability below 0.05? I checked the other groups below 0.05 as well.
+2. Should I run the wider-range simulation before we print the poster, or keep that as follow-up work for the paper?
+3. Does this framing work for the paper, and which of the remaining analyses would you prioritize?
+
+The detailed response is in `poster/REVISION4.md`, and the updated poster is `XuS_IGVF2026_poster_round4.pptx`.
 
 Best,
 Sunan
 
 ---
 
-## Slack version
+## Short message alternative
 
-> Round-4 poster update 🧵
-> • §5: replaced the MAE-difference panel with "% of loci where CHEWS is closer to truth". With 1 causal SNP, CHEWS wins 75–82% at *every* n; what shrinks with n is the margin, not the frequency. With 20 causal SNPs, GCTA wins 72–77% for n ≥ 300. (A % of h² isn't meaningful there because true h² is pooled over 0.05–0.8.)
-> • §7, your 0–0.05 question: with permuted genotypes (true h² = 0), GCTA and CHEWS both average 0.013. In a simulation on the real GTEx genotypes, CHEWS is closer to truth on ~60% of genes in that cell, at every assumed null fraction. But the simulation failed the calibration check I set beforehand (it misses the high-h² corner), so it's not on the poster. A ~20-min re-run with h² up to 0.8 should fix that. Worth doing before print?
-> • §5A and §8 unchanged.
-> • Also: I drafted a paper outline and would love your eyes on it.
+Hi Tiffany — I updated the figure to show how often CHEWS is closer to the true heritability in the simulations. With one causal variant, CHEWS is closer in 75–82% of cases across sample sizes of 100–1,000. With 20 causal variants, GCTA is closer in 72–77% of cases once the sample size reaches 300. I kept the standard-error comparison and split-half table unchanged.
+
+For your question about the low-heritability genes: after shuffling the genotype–expression relationship, GCTA and CHEWS both average about 0.013. A separate simulation using real GTEx genotypes suggests that CHEWS's lower estimates may be modestly more accurate in the low-heritability, no-detected-signal group. However, that simulation did not reproduce the overall real-data pattern well enough to pass our planned check, so I have kept its accuracy results off the poster. Extending the simulated heritability range is a reasonable next step, but we do not yet know whether it will resolve the mismatch.
+
+Would you prefer that follow-up before printing, or as part of the paper? I also drafted a paper outline and would appreciate your thoughts on the main story and the remaining analyses.
