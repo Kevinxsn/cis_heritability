@@ -1,0 +1,48 @@
+# High-LD campaign: LD is the confounder fine-mapping exists to resolve, so
+# this campaign restricts to the most LD-dense cis-regions.
+#
+# Threshold note: the LD score here is the fraction of sampled SNP pairs with
+# r^2 >= 0.8.  Measured over 300 random +/-500 kb 1000G EUR windows it is
+# tightly distributed (median 0.0024, p90 0.0051, max 0.0109), so the legacy
+# scripts' absolute cut of 0.02 is unreachable and would reject every region.
+# "High LD" is therefore defined empirically as the **top decile**, >= 0.005.
+name: high_ld
+description: >
+  Top-decile-LD 1000G EUR cis-regions (+/-500 kb), normal effect sizes, n = 300.
+  Sweeps 5 causal-SNP counts x 6 true heritabilities.
+seed: 20260806
+n_regions: 50
+results_root: /home/sux002/work/cis_heritability/results
+
+data:
+  geno_prefix: /expanse/lustre/projects/ddp412/sux002/cis_heritability_data/1000G.EUR.
+  chromosomes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+  window_bp: 500000
+  min_snps: 50
+  max_snps: 25000
+
+region:
+  ld_arch: high
+  r2_threshold: 0.8
+  frac_min: 0.005
+  score_max_snps: 500
+  max_draws: 500
+
+grid:
+  n_individuals: [300]
+  ncausal: [1, 3, 5, 10, 20]
+  h2: [0.05, 0.1, 0.2, 0.4, 0.6, 0.8]
+  effect_dist: [normal]
+  maf_bin: [all]
+
+method:
+  ld_regularization: 0.1
+  ld_for_susie: panel          # what the legacy PLINK --r pipeline handed SuSiE
+  legacy_ambiguous_filter: true
+  susie_L: 10
+  susie_max_iter: 100
+  max_retries: 5
+
+compute:
+  workers: 48
+  threads_per_worker: 1

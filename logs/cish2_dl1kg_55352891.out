@@ -1,0 +1,14 @@
+EUR samples: 503
+ok chr4 973M
+ok chr3 962M
+ok chr1 1.1G
+ok chr2 1.2G
+ok chr6 871M
+ok chr5 2.2G
+ok chr7 2.1G
+ok chr8 749M
+ok chr9 584M
+ok chr10 673M
+ok chr13 483M
+ok chr11 667M
+slurmstepd: error: *** JOB 55352891 ON exp-9-55 CANCELLED AT 2026-10-28T02:51:53 DUE TO TIME LIMIT ***

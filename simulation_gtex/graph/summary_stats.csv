@@ -1,0 +1,10 @@
+Statistic,GCTA h²,SuSiE h²
+Count,76,76
+Mean,0.0230,0.0255
+Median,0.0076,0.0040
+Std Dev,0.0433,0.0557
+Min,-0.0415,0.0000
+Max,0.1876,0.2383
+Genes with h² > 0,57,57
+Genes with h² > 0.2,0,4
+Pearson r (p=6.60e-35),0.9344,0.9344

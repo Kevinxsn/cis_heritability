@@ -1,0 +1,27 @@
+(6348 variants skipped.)
+1055454 out of 1097199 variants loaded from .bim file.
+2504 people (0 males, 0 females, 2504 ambiguous) loaded from .fam.
+--keep: 503 people remaining.
+1055454 variants and 503 people pass filters and QC.
+raw chr22 variants: 1,055,454   old window: 17,287   old chr22 total: 308,143
+ rs_only  drop_dup_pos       freq  chr22_total  window  only_new  only_old  a1_match  total_diff
+    True         False     mac>=1            0       0         0     17287       NaN     -308143
+    True         False     mac>=2            0       0         0     17287       NaN     -308143
+    True         False maf>=0.005            0       0         0     17287       NaN     -308143
+    True         False  maf>=0.01            0       0         0     17287       NaN     -308143
+    True         False  maf>=0.05            0       0         0     17287       NaN     -308143
+    True          True     mac>=1            0       0         0     17287       NaN     -308143
+    True          True     mac>=2            0       0         0     17287       NaN     -308143
+    True          True maf>=0.005            0       0         0     17287       NaN     -308143
+    True          True  maf>=0.01            0       0         0     17287       NaN     -308143
+    True          True  maf>=0.05            0       0         0     17287       NaN     -308143
+   False         False  maf>=0.05        85250    4900      4900     17287       NaN     -222893
+   False          True  maf>=0.05        85250    4900      4900     17287       NaN     -222893
+   False         False  maf>=0.01       121435    7335      7335     17287       NaN     -186708
+   False          True  maf>=0.01       121435    7335      7335     17287       NaN     -186708
+   False         False maf>=0.005       138384    8411      8411     17287       NaN     -169759
+   False          True maf>=0.005       138384    8411      8411     17287       NaN     -169759
+   False         False     mac>=2       188457   11192     11192     17287       NaN     -119686
+   False          True     mac>=2       188457   11192     11192     17287       NaN     -119686
+   False         False     mac>=1       308144   17288     17288     17287       NaN           1
+   False          True     mac>=1       308144   17288     17288     17287       NaN           1

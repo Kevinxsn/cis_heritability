@@ -1,0 +1,241 @@
+{
+  "fit_total_cell_exponent": 1.66,
+  "fit_total_cell_coef": 3.4630396969328556e-05,
+  "fit_memory_exponent": 1.63,
+  "cell_sec_at_p": {
+    "1000": 3.2,
+    "3000": 19.8,
+    "5000": 46.2,
+    "8000": 100.5
+  },
+  "su_per_model_at_p": {
+    "1000": 0.00089,
+    "3000": 0.0055,
+    "5000": 0.01282,
+    "8000": 0.02792
+  },
+  "scenarios": [
+    {
+      "name": "Baseline sim campaign (1000 regions \u00d7 5 ncausal \u00d7 6 h\u00b2)",
+      "n_models": 30000,
+      "SU": 165,
+      "node_days": 0.05
+    },
+    {
+      "name": "Full architecture sweep (1000 regions \u00d7 all parameter axes)",
+      "n_models": 540000,
+      "SU": 2971,
+      "node_days": 0.97
+    },
+    {
+      "name": "GTEx real-data pass (49 tissues \u00d7 20k genes)",
+      "n_models": 980000,
+      "SU": 5393,
+      "node_days": 1.76
+    },
+    {
+      "name": "100 GWAS traits (~1,500 loci each)",
+      "n_models": 150000,
+      "SU": 825,
+      "node_days": 0.27
+    }
+  ],
+  "parallel_heavy": [
+    {
+      "C": 1,
+      "wall": 27.533897161483765,
+      "n_done": 1,
+      "mean_cell": 21.875556707382202,
+      "max_cell": 21.875556707382202,
+      "throughput_per_hr": 130.74792786819577,
+      "speedup": 1.0,
+      "efficiency": 1.0
+    },
+    {
+      "C": 2,
+      "wall": 23.34337878227234,
+      "n_done": 2,
+      "mean_cell": 20.918807864189148,
+      "max_cell": 21.120442152023315,
+      "throughput_per_hr": 308.4386398025591,
+      "speedup": 2.3590327191532214,
+      "efficiency": 1.1795163595766107
+    },
+    {
+      "C": 4,
+      "wall": 37.90148997306824,
+      "n_done": 4,
+      "mean_cell": 32.77049499750137,
+      "max_cell": 34.763673067092896,
+      "throughput_per_hr": 379.9322931692724,
+      "speedup": 2.9058379690137355,
+      "efficiency": 0.7264594922534339
+    },
+    {
+      "C": 8,
+      "wall": 54.183645725250244,
+      "n_done": 8,
+      "mean_cell": 49.693424344062805,
+      "max_cell": 51.03277397155762,
+      "throughput_per_hr": 531.5256958905378,
+      "speedup": 4.0652705137044896,
+      "efficiency": 0.5081588142130612
+    },
+    {
+      "C": 16,
+      "wall": 91.97297263145447,
+      "n_done": 16,
+      "mean_cell": 84.38576112687588,
+      "max_cell": 87.62330055236816,
+      "throughput_per_hr": 626.2709397336689,
+      "speedup": 4.789911013847955,
+      "efficiency": 0.2993694383654972
+    },
+    {
+      "C": 32,
+      "wall": 160.56617259979248,
+      "n_done": 32,
+      "mean_cell": 152.89229173213243,
+      "max_cell": 155.129221200943,
+      "throughput_per_hr": 717.4612070198209,
+      "speedup": 5.487361969843823,
+      "efficiency": 0.17148006155761947
+    },
+    {
+      "C": 64,
+      "wall": 306.04647064208984,
+      "n_done": 64,
+      "mean_cell": 295.3503379188478,
+      "max_cell": 299.2994101047516,
+      "throughput_per_hr": 752.8268485391044,
+      "speedup": 5.757849174466559,
+      "efficiency": 0.08996639335103998
+    },
+    {
+      "C": 128,
+      "wall": 584.358660697937,
+      "n_done": 128,
+      "mean_cell": 565.4731943011284,
+      "max_cell": 572.7029240131378,
+      "throughput_per_hr": 788.5568076455596,
+      "speedup": 6.031122791027993,
+      "efficiency": 0.0471181468049062
+    }
+  ],
+  "parallel_light": [
+    {
+      "C": 1,
+      "wall": 13.707646608352661,
+      "n_done": 1,
+      "mean_cell": 6.813256025314331,
+      "max_cell": 6.813256025314331,
+      "throughput_per_hr": 262.6271381847825,
+      "speedup": 1.0,
+      "efficiency": 1.0
+    },
+    {
+      "C": 2,
+      "wall": 9.236455202102661,
+      "n_done": 2,
+      "mean_cell": 7.120319843292236,
+      "max_cell": 7.237955808639526,
+      "throughput_per_hr": 779.5198311968138,
+      "speedup": 2.9681617695135123,
+      "efficiency": 1.4840808847567561
+    },
+    {
+      "C": 4,
+      "wall": 11.361734867095947,
+      "n_done": 4,
+      "mean_cell": 9.134109258651733,
+      "max_cell": 9.205180406570435,
+      "throughput_per_hr": 1267.4120782120162,
+      "speedup": 4.8258991320244835,
+      "efficiency": 1.2064747830061209
+    },
+    {
+      "C": 8,
+      "wall": 15.433173656463623,
+      "n_done": 8,
+      "mean_cell": 12.82458633184433,
+      "max_cell": 13.193376302719116,
+      "throughput_per_hr": 1866.1100199529064,
+      "speedup": 7.105549079394548,
+      "efficiency": 0.8881936349243185
+    },
+    {
+      "C": 16,
+      "wall": 22.395347356796265,
+      "n_done": 16,
+      "mean_cell": 19.718108117580414,
+      "max_cell": 20.031881093978882,
+      "throughput_per_hr": 2571.9627868384127,
+      "speedup": 9.793210269948563,
+      "efficiency": 0.6120756418717852
+    },
+    {
+      "C": 32,
+      "wall": 38.03564143180847,
+      "n_done": 32,
+      "mean_cell": 33.04955553263426,
+      "max_cell": 33.61648750305176,
+      "throughput_per_hr": 3028.73819563512,
+      "speedup": 11.53246468194053,
+      "efficiency": 0.36038952131064156
+    },
+    {
+      "C": 64,
+      "wall": 65.06019592285156,
+      "n_done": 64,
+      "mean_cell": 61.25540188699961,
+      "max_cell": 61.6203408241272,
+      "throughput_per_hr": 3541.3357849891586,
+      "speedup": 13.48427207281793,
+      "efficiency": 0.21069175113778016
+    }
+  ],
+  "grid": {
+    "n (sample size)": [
+      100,
+      300,
+      500,
+      800,
+      1000
+    ],
+    "ncausal (causal SNPs)": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "h2 (heritability)": [
+      0.05,
+      0.1,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "effect-size dist": [
+      "normal",
+      "fixed",
+      "pareto"
+    ],
+    "LD architecture": [
+      "regular",
+      "high-LD",
+      "low-LD"
+    ],
+    "MAF bin": [
+      "common",
+      "rare"
+    ]
+  },
+  "ld_file_mb": {
+    "1544": 92.9,
+    "3567": 496.1,
+    "8227": 2774.7,
+    "17287": 12251.7
+  }
+}

@@ -1,0 +1,56 @@
+﻿F: Pathway[a]-TCSC
+1. Resource Usage Plan to Achieve the Research Objectives
+Pathway-TCSC scores single cells according to the expression of pathway-specific marker genes and constructs gene expression prediction models for cells representing each pathway, allowing disease heritability to be partitioned by regulatory pathway rather than by discrete cell type. The real data pipeline for this project runs five stages for each of 312 immune-related MSigDB pathways. First, single cell expression profiles for 800,000 cells are pseudobulked into pathway-specific expression profiles. Second, all 800,000 cells are scored against each pathway's marker genes to identify cells representative of that pathway. Third, we train FUSION cross-validated gene expression prediction models for approximately 12,000 genes per pathway, resulting in approximately 3.74 million gene models across all 312 pathways; this step constitutes the dominant computational cost of the project. Fourth, we perform TWAS using these pathway-specific gene models against 24 immune-mediated complex traits and diseases. Fifth, we run TCSC to model co-regulation across pathways for each trait and identify putative causal pathways, comprising four sub-stages: concatenation of per-chromosome results, LDSC, pairwise pathway co-regulation scoring, and the final TCSC regression.
+
+
+As a point of comparison to the pathway-level approach, we also run the equivalent pseudobulking, gene model, and TWAS stages at the level of 8 discrete cell types, allowing us to directly contrast the power and resource cost of pathway-level and cell-type-level analysis. We additionally benchmark the pathway-level approach against JEPEGMIX2, GCSC, and the simpler ACAT-V aggregation method, using the same 24 traits.
+
+
+All computation is performed using CPU-only jobs on Expanse's shared partition; no GPU resources or exclusive whole-node allocations are requested, consistent with the embarrassingly parallel structure of the analysis across genes, traits, and pathways.
+
+
+Job granularity for the gene model training step was determined empirically rather than assumed. We conducted a controlled scaling test in which a fixed workload of 500 genes was split across an increasing number of concurrent SLURM jobs (1, 10, 50, and 200). Beyond a modest number of concurrent jobs, performance degraded rather than improved: splitting the workload from 1 to 200 jobs increased total wall time from 3.18 to 5.45 hours, with parallel efficiency falling to 0.3% at 200 concurrent jobs. This result indicates that per-job startup and filesystem overhead, rather than compute time, dominate at high levels of job fragmentation. Based on this finding, production jobs are batched at approximately 1,200 genes per job (approximately 10 jobs per pathway), which keeps individual jobs within Expanse's walltime limits while avoiding the overhead penalty observed at finer granularity.
+
+
+
+
+
+
+2. Justification of the Allocation Amounts for All Resources and Resource Types
+Gene expression model training represents the dominant computational cost of this project. A scaling test using single jobs of 10, 100, and 1,000 genes fit a cost model of wall_seconds ≈ 15.6 + 22.3 × n_genes. This model was cross-validated against a completed production job processing 2,300 genes, for which the predicted cost of 14.24 core-hours closely matched the observed cost of 14.38 core-hours, an error of approximately 1%. At approximately 12,000 genes per pathway, this yields an estimated 74.3 core-hours per pathway and approximately 23,193 core-hours across all 312 pathways[b], assuming memory requests are right-sized as described below.
+
+
+Memory allocation directly affects the effective credit cost of a job on Expanse's shared partition. Because standard compute nodes provide approximately 2GB of memory per core, jobs are billed for the larger of the requested core count or the memory-equivalent core count, computed as the ceiling of requested memory in GB divided by 2. Our gene model jobs originally requested 5 to 20GB of memory on a single core while using well under 1GB (observed maximum resident set size of 0.39 to 0.45GB); at 20GB requested, this amounts to an approximately tenfold hidden cost multiplier.[c] We have since capped memory requests for this step at 2GB per core, and the 23,193 core-hour estimate above assumes this correction remains in place.
+
+
+Per-job costs for the remaining pipeline stages were estimated from three sampled, completed production jobs per stage or sub-stage. Table 1 summarizes these estimates for the pathway-level analysis.
+
+
+Pseudobulking is billed at 80GB of requested memory per job, corresponding to a memory-equivalent allocation of 40 cores (ceiling of 80 divided by 2). This yields a cost of 312 pathways × 2.436 hours × 40 cores, or approximately 30,405 core-hours, making pseudobulking the largest single line item after gene model training, at roughly 1.3 times the size of that step.
+
+
+Table 2 summarizes the equivalent estimate for the cell-type-level comparison analysis, applying the same per-unit rates and assuming approximately 12,000 genes per cell type.
+
+
+For storage, the gene model output for a single pathway (GOBP_ADAPTIVE_IMMUNE_RESPONSE, FUSION_results/out) totals 1.3GB across 17,105 files. Scaled to 312 pathways, this yields an estimated 406GB and 5.3 million files for gene model outputs alone. Outputs from TWAS, TCSC, pathway marker scoring, and pseudobulking are comparatively small per-run summary files and are not itemized separately here.
+
+
+In total, we estimate 23,193 core-hours for gene model training, 34,875 core-hours for the pathway-level TWAS, TCSC, scoring, and pseudobulking stages, and 1,403 core-hours for the cell-type-level comparison, for a combined total of approximately 59,500 core-hours. This estimate excludes benchmarking against JEPEGMIX2, GCSC, and ACAT-V, which largely reuse existing pathway-level gene models and outputs rather than requiring comparable new computation. This request represents one component of the lab's shared ACCESS allocation and is not intended to independently approach the lab-wide target.
+3. Resource Appropriateness
+All computation for this project uses CPU-only jobs on Expanse's shared partition, with no GPU resources and no exclusive whole-node allocations requested. This matches the embarrassingly parallel structure of the workload, in which computation is naturally divided across genes, traits, and pathways.
+
+
+Job granularity was tuned empirically rather than assumed appropriate. A controlled test demonstrated that excessive job fragmentation, specifically splitting a fixed 500-gene workload across 200 concurrent jobs, degrades performance due to per-job startup and filesystem overhead rather than compute time, with parallel efficiency falling to 0.3% at that level of fragmentation. Production batches of approximately 1,200 genes per job reflect this finding and balance Expanse's walltime limits against the overhead penalty associated with finer-grained parallelism.
+
+
+The gene model output stage produces a large number of small files, with over 17,100 files generated per pathway and an estimated 5.3 million files across all 312 pathways. This pattern is a known source of strain on Expanse's Lustre filesystem, and we are evaluating post-hoc consolidation strategies, such as packing per-pathway outputs into fewer archive or HDF5 files, to reduce load on the metadata server.
+
+
+Memory requests are being right-sized following our identification of substantial over-allocation in earlier production runs. Gene model jobs originally requested up to 20GB of memory while using under 0.5GB, and pseudobulking jobs originally requested approximately 100GB while using approximately 46.9GB against a confirmed working floor of approximately 80GB. Correcting these requests reduces both wasted memory reservation and, under Expanse's memory-driven shared-partition billing, the effective credit cost of these jobs.
+
+
+
+
+[a]@xgui@ucsd.edu this section is written really really well!
+[b]we can even estimate what the SUs would be if we were to apply your method to TenK10K or another scRNA-seq dataset! We want to inflate the number of SUs as much as we can :)
+[c]what does this mean? can you add it here? https://docs.google.com/document/d/1h2y2uC6JkWvCAuIbK8bXs4_ufPMxxCfLuYaDqQu9XOc/edit?tab=t.0

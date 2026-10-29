@@ -1,0 +1,36 @@
+# Rebuilds the `dsc180` environment the project was developed and run in on
+# mediator.sdsc.edu.  Versions are the ones actually installed there (checked
+# 2026-10-27).  If the solver cannot satisfy an exact pin on the new machine,
+# relax that pin rather than the others -- susieR, GCTA and Python 3.8 /
+# pandas 2.0 are the ones that matter for reproducing numbers.
+#
+#   conda env create -f environment.yml      # or: mamba env create -f ...
+#   export CISH2_ENV="$(conda info --base)/envs/cish2"
+name: cish2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.8.16
+  - numpy=1.24.3
+  - scipy=1.10.1
+  - pandas=2.0.3
+  - matplotlib=3.7.2
+  - pyyaml=6.0
+  - statsmodels=0.14.0
+  - pillow
+  - pytest
+  - r-base=4.2.3
+  - r-susier=0.12.35
+  - r-data.table=1.15.4
+  - r-rfast=2.1.0
+  - gcta=1.94.1                 # provides gcta64
+  - plink=1.90                  # PLINK 1.9
+  - fonts-conda-forge           # Liberation Sans for poster figures (Arial-metric)
+  - pip
+  # Expanse 2026-10-28: conda cannot solve these two.  conda-forge's py3.8 xarray
+  # builds (needed by pandas-plink) all cap pandas<2, and python-pptx 1.0.2 is not
+  # on conda-forge.  pip's xarray has no pandas cap, so pandas 2.0.3 stays pinned.
+  - pip:
+      - pandas-plink==2.2.9      # only used by tests/test_pipeline.py as a reference
+      - python-pptx==1.0.2       # poster/build_poster.py

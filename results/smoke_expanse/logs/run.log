@@ -1,0 +1,10 @@
+2026-10-28 03:35:31 INFO    campaign smoke_expanse (fingerprint d6b8c0b63110)
+2026-10-28 03:35:31 INFO    grid: 4 cells/region x 4 regions = 16 cells | 0 already done, 4 to run
+2026-10-28 03:35:31 INFO    workers=4 threads/worker=1 scratch=/scratch/sux002/job_55354052/cish2-smoke_expanse-sux002 (933 GB free)
+2026-10-28 03:35:32 INFO    bim index ready for 2 chromosomes
+2026-10-28 03:35:34 INFO    [1/4] slot 1 ok in 2.6s | 4 rows | 0.0 min elapsed, ETA 0.1 min
+2026-10-28 03:35:35 INFO    [2/4] slot 2 ok in 2.9s | 8 rows | 0.1 min elapsed, ETA 0.1 min
+2026-10-28 03:35:37 INFO    [3/4] slot 3 ok in 4.8s | 12 rows | 0.1 min elapsed, ETA 0.0 min
+2026-10-28 03:35:40 INFO    [4/4] slot 0 ok in 7.7s | 16 rows | 0.1 min elapsed, ETA 0.0 min
+2026-10-28 03:35:40 INFO    done: 4 regions ok, 0 failed, 16 rows in 0.1 min
+2026-10-28 03:35:40 INFO    consolidated -> /home/sux002/work/cis_heritability/results/smoke_expanse/cells.tsv.gz

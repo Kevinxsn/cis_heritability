@@ -1,0 +1,32 @@
+# Fast end-to-end check: small window, few regions, tiny grid (~1 minute).
+name: smoke
+description: End-to-end smoke test of the whole pipeline.
+seed: 1
+n_regions: 4
+results_root: /home/sux002/work/cis_heritability/results
+
+data:
+  geno_prefix: /expanse/lustre/projects/ddp412/sux002/cis_heritability_data/1000G.EUR.
+  chromosomes: [21, 22]
+  window_bp: 50000
+  min_snps: 50
+  max_snps: 3000
+
+region:
+  ld_arch: regular
+
+grid:
+  n_individuals: [300]
+  ncausal: [1, 5]
+  h2: [0.05, 0.4]
+  effect_dist: [normal]
+  maf_bin: [all]
+
+method:
+  ld_for_susie: panel
+  legacy_ambiguous_filter: true
+  max_retries: 2
+
+compute:
+  workers: 4
+  threads_per_worker: 1

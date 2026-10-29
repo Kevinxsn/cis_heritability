@@ -1,0 +1,27 @@
+PLINK v1.9.0-b.8 64-bit (22 Oct 2024)
+Options in effect:
+  --bfile /projects/ps-renlab2/sux002/data/1000G.EUR.22
+  --chr 22
+  --from-bp 18783968
+  --make-bed
+  --out bench_regions/reg_22_kb100
+  --to-bp 18983968
+
+Hostname: mediator.sdsc.edu
+Working directory: /mnt/tscc2/sux002/cis_heritability/expand_proposal
+Start time: Mon Jul 20 13:02:00 2026
+
+Random number seed: 1784577720
+4116324 MB RAM detected; reserving 2058162 MB for main workspace.
+1544 out of 308143 variants loaded from .bim file.
+503 people (240 males, 263 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 503 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is in [0.9999995, 1).
+1544 variants and 503 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to bench_regions/reg_22_kb100.bed + bench_regions/reg_22_kb100.bim +
+bench_regions/reg_22_kb100.fam ... done.
+
+End time: Mon Jul 20 13:02:00 2026

@@ -1,0 +1,172 @@
+﻿H: Open Multi-Step Regulatory Inference for Noncoding Variant Effect Prediction
+1. Resource Usage Plan to Achieve the Research Objectives
+This project develops sequence-to-function models that predict functional genomic signals from DNA sequence and use direct or multi-step inference to estimate the effects of noncoding variants and targeted epigenetic perturbations. Custom software is necessary because the workflow must combine genomic coordinates, reference DNA, functional-genomic tracks, assay-specific targets, modality-aware masking, and biologically meaningful evaluation. Generic image or language-model pipelines do not provide these genomic data structures or task semantics.
+
+
+The repository contains approximately 23,770 lines of homegrown Python and 4,722 lines of Slurm and shell scripts, excluding data, checkpoints, environments, generated outputs, and third-party code. Internal components provide genomic-window and track I/O, masked-autoencoder models, rotary positional embeddings, Hydra/Lightning training and restart handling, direct and procedure-based multi-step inference, prediction-Zarr writing, and sequence-to-function metrics. Required third-party software includes PyTorch, PyTorch Lightning, Hydra/OmegaConf, NumPy, pandas, SciPy, Zarr with numcodecs/Blosc compression, matplotlib, Weights & Biases, Slurm, and standard genomics utilities such as bedtools, bgzip, and tabix.
+
+
+The project uses a staged computational plan rather than a full Cartesian sweep of tracks, tasks, model sizes, contexts, seeds, and inference procedures. Approximately 10 million parameter development models are used to eliminate weak configurations before a smaller number of substantial training runs and a few expensive mature models.
+Planned scientific workload
+Near-term work will focus on THP-1 cells using selected combinations of accessibility signals, H3K27ac, and compatible transcriptional outputs such as RNA or CAGE. Candidate inputs include THP-1 data associated with Nasser et al., tracks similar to assays represented in Enformer or Borzoi, FANTOM5 CAGE where compatible, and selected mixed-track configurations. The project will compare a limited set of joint-prediction, conditional-prediction, masking, and direct-versus-multi-step formulations.
+
+
+Selected THP-1 models will first be evaluated on promoter-editing variants using reference and alternate sequence inference, direct inference, multi-step inference with predicted intermediate tracks, oracle-intermediate controls where appropriate, and relevant external-model comparisons.
+
+
+The current approximately 30-32 kb context is insufficient for the planned enhancer benchmark because the relevant enhancer is roughly 60 kb from the promoter. The project will therefore test longer contexts, potentially in the approximately 100-200 kb range. Feasibility work may compare direct longer-context training, progressive context expansion, and evaluation-time length generalization with rotary positional embeddings.
+
+
+Current approximately 10 million parameter models are development models rather than the intended final scale. After the data, task, and inference pipeline is stable, the project will conduct a limited capacity study using selected models in approximately the 40-120 million parameter range. Most exploratory work will remain at 10 million parameters; only a small number of larger candidates and final models will be trained.
+
+
+Epigenetic perturbation modeling is a parallel major workstream rather than a fallback. Potential applications include CRISPRa or p300-like activation, KRAB-mediated repression, imposed changes to accessibility or histone-mark inputs, propagation of intermediate-state perturbations to downstream outputs, and direct versus multi-step perturbation prediction.
+
+
+If THP-1 sequence-variant prediction is promising, the project may later expand to a small number of selected GTEx tissues using compatible functional data and fine-mapped variants. This is not a plan to train models for every GTEx tissue.
+
+
+Workstream or run type
+	Provisional planning range
+	Estimated cost (V100 GPU-hours)
+	Small-model development and debugging
+	12-24 short jobs
+	12H_short-24H_short
+	THP-1 track shortlist
+	6-12 current-scale trainings
+	31.3-81.0
+	Masking and task comparisons
+	4-8 current-scale trainings
+	20.9-54.0
+	Promoter variant evaluation
+	20-60 inference/evaluation batches
+	0.1-22.0, using the observed historical evaluation range
+	Long-context feasibility
+	2-4 short pilots
+	2H_long-4H_long
+	Capacity pilot
+	2-3 selected trainings
+	2H_cap-3H_cap
+	Selected mature models
+	2-6 full trainings
+	2G_matureH_mature-6G_matureH_mature
+	Enhancer variant evaluation
+	20-60 inference/evaluation batches
+	0.1-22.0, using the observed historical evaluation range
+	Epigenetic perturbation development
+	6-12 initial current-scale training configurations
+	31.3-81.0, plus associated inference
+	External-model comparisons
+	10-30 evaluation cases
+	10H_external-30H_external
+	Conditional GTEx expansion
+	3-9 training configurations; evaluation TBD
+	3H_GTEx-9H_GTEx, plus evaluation
+	
+
+The numerical training ranges use the measured 5.22-6.75 V100 GPU-hours per comparable current-scale training run. The evaluation ranges use the observed historical range of approximately 0.005-0.366 GPU-hours per timed evaluation segment; a dedicated promoter or enhancer evaluation batch has not yet been timed.
+
+
+H_short, H_long, H_cap, H_external, and H_GTEx denote the measured GPU-hours for one representative job in the corresponding category once available. H_mature is the wall time for one selected mature training run and G_mature is its GPU count. These formulas keep unmeasured future costs explicit rather than replacing them with qualitative labels or unsupported numeric extrapolations.
+
+
+For provisional planning, we use 0.5 V100 GPU-hours for a short development job, 1 V100 GPU-hour for a long-context feasibility test, 40 V100 GPU-hours for a larger-capacity pilot, 0.25 V100 GPU-hours for an external-model evaluation case, and 25 V100 GPU-hours for one GTEx tissue-specific training configuration. We additionally use one GPU and 100 V100 GPU-hours as an initial placeholder for each selected mature long-context, larger-capacity model. These are planning estimates rather than measured costs and should be replaced once representative jobs in each category have been timed.
+2. Justification of the Allocation Amounts for All Resources and Resource Types
+All relevant archived runs were performed on Expanse. Current training jobs use one V100 GPU, eight CPU cores, and typically 32 GB RAM. Current models contain approximately 10 million parameters and use 8-32 kb contexts.
+
+
+Repository records document approximately 150 GPU-hours of prior Expanse use. Because all GPU jobs use eight CPUs, this corresponds to approximately 1,200 allocated CPU-core-hours, in addition to a small amount of CPU-only analysis work.
+
+
+Representative completed jobs provide the current per-run cost anchors:
+
+
+Representative completed Expanse job
+	Current-scale setting
+	Measured elapsed cost
+	Direct two-assay model
+	Approximately 10 million parameters, 32 kb, one V100
+	5.22 GPU-hours
+	Multi-step two-assay model
+	Approximately 10 million parameters, 32 kb, one V100
+	6.75 GPU-hours
+	Evaluation and inference
+	Current fixed-validation and compatibility cases
+	Generally minutes per job
+	
+
+The 5.22- and 6.75-GPU-hour cases include periodic validation and are appropriate anchors only for comparable current-scale jobs. They are not estimates for future 100-200 kb or 40-120 million parameter models.
+
+
+Current-scale GPU use can be estimated as:
+
+
+GPU-hours = number of runs × GPUs per run × elapsed hours per run.
+
+
+For comparable current-scale jobs:
+
+
+* direct training: N_direct × 5.22 GPU-hours;
+* multi-step training: N_multistep × 6.75 GPU-hours.
+
+
+Inference and evaluation may involve many variants, models, and inference procedures, but individual jobs are expected to remain short relative to training and should receive a modest explicit allocation.
+
+
+Long-context and larger-capacity training cannot yet be assigned a defensible measured per-run cost. Their costs are therefore written explicitly as job-count × GPU-count × measured future wall time in the workload table above. For mature training:
+
+
+mature-model GPU-hours = N_mature × G_mature × H_mature,
+
+
+where H_mature will be determined after one representative mature context and capacity configuration is implemented and timed. Current 10 million parameter, 32 kb timings should be treated as lower-bound comparators rather than extrapolated linearly by sequence length or parameter count.
+Storage requirements
+Current storage consists of directory-based Zarr inputs containing reference DNA and binned functional tracks, genomic interval files, checkpoints, logs, resolved configurations, prediction Zarrs, metrics, and plots.
+
+
+Measured examples include:
+
+
+* approximately 121-123 MB per checkpoint;
+* four retained checkpoints per representative completed run, totaling approximately 493 MB;
+* one representative 3,000-window, one-track, 32 kb prediction Zarr occupying approximately 20 MB across 153 files.
+
+
+Storage will increase with longer contexts, additional tracks, larger models, variant and perturbation panels, tiled inference, and optional multi-step trajectory outputs. Mature checkpoint and prediction sizes have not yet been measured.
+
+
+Directory Zarr creates many compressed chunk and metadata files, which can stress shared-filesystem metadata even when total byte volume is moderate. The storage plan is therefore to retain source data, selected final checkpoints, final prediction artifacts, metrics, and provenance while archiving or deleting disposable debug outputs, duplicate checkpoints, temporary trajectories, and intermediate plots.
+3. Resource Appropriateness
+GPU resources are appropriate because model training and inference use transformer-based neural networks over genomic sequence and functional-track tokens. The current implementation uses a single training device, and the current request of one V100 per job matches that implementation. Eight CPU cores support data loading and associated training processes, and 32 GB RAM has been sufficient for the current workflow.
+
+
+The current parallelization unit is the independent scientific run. Different track combinations, tasks, masking strategies, seeds, tissues, and evaluation procedures can be submitted as separate single-GPU jobs. This provides task-level parallelism across the project, but aggregate concurrent throughput has not been measured and is not claimed to scale linearly.
+
+
+The main future scaling dimensions are:
+
+
+1. Sequence context: increasing from approximately 30-32 kb toward a context sufficient for enhancer analysis, potentially approximately 100-200 kb.
+2. Model capacity: increasing selected models from approximately 10 million parameters toward approximately 40-120 million parameters.
+3. Scientific workload: increasing the number of selected track, task, masking, perturbation, and tissue configurations.
+4. Inference scope: increasing the number of variants, retained models, and direct or multi-step procedures.
+
+
+DistributedDataParallel is not currently implemented or validated, and no multi-GPU speedup or efficiency result is claimed. Future A100/H100 multi-GPU work may be appropriate for a later larger-model phase, but NAIRR resources have not yet been used for this project and are separate from the present Expanse accounting.
+
+
+Existing efficiency measures include:
+
+
+* requesting one GPU for the one-device implementation;
+* consolidated and compressed Zarr storage;
+* lazy per-worker data access;
+* pinned memory and persistent DataLoader workers;
+* bounded checkpoint retention;
+* restart and resume support for interrupted training;
+* computing metrics from saved predictions rather than rerunning inference;
+* archiving or deleting disposable outputs.
+
+
+The workflow produces both large objects and many small files. Checkpoints are relatively large individual files, while directory Zarr inputs, prediction outputs, and optional trajectories produce many chunk files. Compression, consolidated metadata, bounded retention, and reuse of saved predictions reduce unnecessary storage and I/O.

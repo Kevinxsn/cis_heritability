@@ -1,0 +1,15 @@
+{
+  "best": {
+    "pi0": 0.1,
+    "h2_scale": 0.5,
+    "q": 1.0
+  },
+  "S_min": 202.97281442246174,
+  "tolerance": 48.03689941331594,
+  "n_acceptable": 2,
+  "n_terms": 36,
+  "calibration_passes": false,
+  "sign_agree": 0.9444444444444444,
+  "mad_gap": 0.013881675429735032,
+  "tvd": 0.021538284896769143
+}

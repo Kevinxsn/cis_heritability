@@ -1,0 +1,183 @@
+/home/sux002/miniforge3/envs/cish2/bin/python
+/home/sux002/miniforge3/envs/cish2/bin/Rscript
+/home/sux002/miniforge3/envs/cish2/bin/gcta64
+/home/sux002/miniforge3/envs/cish2/bin/plink
+== a) poster numbers (no data needed)
+
+§3  design
+  ok   paired model fits (GCTA and CHEWS both returned)     poster     20294   data 20294.0000
+  ok   full simulated grid (cells attempted)                poster     20400   data 20400.0000
+  ok   experimental conditions                              poster        13   data   13.0000
+
+§4  polygenicity
+  ok   CHEWS bias, 1 causal SNP                             poster    -0.008   data   -0.0081
+  ok   CHEWS bias, 20 causal SNPs                           poster     -0.13   data   -0.1301
+  ok   GCTA bias, 1 causal SNP                              poster    -0.014   data   -0.0140
+  ok   GCTA bias, 20 causal SNPs                            poster    -0.005   data   -0.0050
+  ok   HEELS bias, 1 causal SNP (cell-weighted)             poster    -0.003   data   -0.0035
+  ok   HEELS bias, 20 causal SNPs                           poster     0.003   data    0.0033
+  ok   CHEWS beats GCTA, 1 causal (%)                       poster        76   data   75.9664
+  ok   CHEWS beats GCTA, 20 causal (%)                      poster        27   data   27.2120
+
+§5  win landscape
+  ok   best cell: 1 causal, h2=0.4 (%)                      poster        85   data   85.0000
+  ok   worst cell: 20 causal, h2=0.8 (%)                    poster         3   data    3.0000
+
+§6  sample size
+  ok   CHEWS bias at n=100                                  poster    -0.122   data   -0.1222
+  ok   CHEWS bias at n=1000                                 poster    -0.021   data   -0.0207
+  ok   CHEWS MAE at n=100                                   poster     0.142   data    0.1421
+  ok   GCTA MAE at n=100                                    poster     0.205   data    0.2047
+  ok   CHEWS MAE at n=1000                                  poster     0.039   data    0.0391
+  ok   GCTA MAE at n=1000                                   poster     0.044   data    0.0437
+  ok   CHEWS error reduction at n=100 (%)                   poster        31   data   30.5492
+
+§7  architecture
+  ok   CHEWS bias, heavy-tailed                             poster     -0.03   data   -0.0299
+  ok   CHEWS bias, equal-magnitude                          poster    -0.094   data   -0.0941
+  ok   GCTA bias, common causal SNPs                        poster     0.045   data    0.0452
+  ok   CHEWS bias, high-LD vs low-LD                        poster     0.009   data    0.0086
+  ok   CHEWS beats GCTA, heavy-tailed (%)                   poster        61   data   61.3788
+  ok   CHEWS beats GCTA, equal-magnitude (%)                poster        43   data   43.1438
+
+§8-9  GTEx whole blood
+  ok   genes at n=574                                       poster     19169   data 19169.0000
+  ok   CHEWS-GCTA gap at n=100                              poster    -0.015   data   -0.0150
+  ok   CHEWS-GCTA gap at n=574                              poster    -0.007   data   -0.0068
+  ok   corr(CHEWS,GCTA) at n=100                            poster      0.81   data    0.8145
+  ok   corr(CHEWS,GCTA) at n=574                            poster       0.9   data    0.8966
+  ok   corr(HEELS,GCTA) at n=574                            poster       1.0   data    0.9996
+  ok   real gap smaller than simulated (x)                  poster         6   data    6.4105
+
+§10  reliability
+  ok   GCTA split-half r                                    poster     0.848   data    0.8478
+  ok   CHEWS split-half r                                   poster     0.892   data    0.8921
+  ok   HEELS split-half r                                   poster     0.855   data    0.8553
+  ok   genes in the signal set                              poster      4171   data 4171.0000
+    cross-estimator table: {'GCTA vs SuSiE': 0.8350427559310405, 'GCTA vs HEELS': 0.9989718053419756, 'SuSiE vs HEELS': 0.8364051008319823}
+
+§6  agreement (revision)
+  ok   HEELS vs GCTA r, n=574                               poster    0.9996   data    0.9996
+  ok   HEELS Deming slope, n=574                            poster      0.93   data    0.9322
+  ok   HEELS RMSE, n=574                                    poster     0.012   data    0.0116
+  ok   CHEWS Deming slope, n=100                            poster      0.67   data    0.6657
+  ok   CHEWS Deming slope, n=574                            poster      1.06   data    1.0644
+  ok   GCTA return rate, lowest (%)                         poster      96.5   data   96.4749
+  ok   GCTA return rate, highest (%)                        poster      98.6   data   98.6466
+
+§7  disjoint strata (revision)
+  ok   smallest cell used                                   poster        50   data   50.0000
+  ok   largest cell used                                    poster      9572   data 9572.0000
+
+§8  reliability by gene set (revision)
+  ok   GCTA r, all genes (no filter)                        poster     0.865   data    0.8646
+  ok   CHEWS r, all genes (no filter)                       poster     0.912   data    0.9118
+  ok   HEELS r, all genes (no filter)                       poster      0.87   data    0.8699
+  ok   GCTA r, prespecified                                 poster      0.85   data    0.8497
+  ok   CHEWS r, prespecified                                poster     0.898   data    0.8984
+  ok   HEELS r, prespecified                                poster     0.857   data    0.8569
+  ok   GCTA r, post-hoc                                     poster     0.848   data    0.8478
+  ok   CHEWS r, post-hoc                                    poster     0.892   data    0.8921
+  ok   HEELS r, post-hoc                                    poster     0.855   data    0.8553
+
+§2  estimand: trace vs exact LD-aware form (revision 2)
+  ok   re-run reproduces baseline trace form (r)            poster       1.0   data    1.0000
+  ok   paired fits in the estimand run                      poster      3000   data 3000.0000
+  ok   cross-term, median                                   poster       0.0   data    0.0000
+  ok   cross-term, mean                                     poster    -0.001   data   -0.0011
+  ok   corr(trace, exact)                                   poster     0.996   data    0.9963
+  ok   fits differing by <0.01 (%)                          poster        82   data   82.0333
+  ok   trace bias, 20 causal                                poster     -0.13   data   -0.1301
+  ok   exact bias, 20 causal                                poster     -0.13   data   -0.1299
+
+§2/§4/§5  round-3 additions
+  ok   |exact - trace| median                               poster     0.002   data    0.0015
+  ok   |exact - trace| p95                                  poster     0.034   data    0.0344
+  ok   |exact - trace| max                                  poster     0.368   data    0.3680
+  ok   exact-form bias, 1 causal                            poster    -0.009   data   -0.0092
+  ok   exact-form bias, 20 causal                           poster     -0.13   data   -0.1299
+  ok   HEELS convergence at n=100 (%)                       poster       100   data  100.0000
+  ok   HEELS estimates > 0.9 at n=100 (%)                   poster        46   data   45.7333
+  ok   p/n at n=100                                         poster        70   data   70.4600
+
+§5  within-locus sampling precision (round 3)
+  ok   precision run: regions                               poster        30   data   30.0000
+  ok   precision run: phenotype draws per cell              poster        25   data   25.0000
+  ok   CHEWS within-locus SD, n=100, 1 causal               poster     0.108   data    0.1081
+  ok   GCTA within-locus SD, n=100, 1 causal                poster     0.246   data    0.2464
+  ok   max |within - across| SD over conditions             poster     0.007   data    0.0066
+
+all poster numbers reproduce from the result tables
+== panel) rebuilt 1000G vs regions recorded by the old runs
+514 recorded regions on chromosomes [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+  identical index range : 213/514
+  identical SNP count   : 500/514
+  centre SNP present    : 514/514
+       regions  same_index  max_i0_shift  median_count_diff
+chrom                                                      
+1           28           0            33                0.0
+2           18           6            30                0.0
+3           26          14             2                0.0
+4           20           8             2                0.0
+5           19          12             4                0.0
+6           25           2             8                0.0
+7           23          23             0                0.0
+8           23           2            32                0.0
+9           18           4            12                0.0
+10          22           6             1                0.0
+11          33          33             0                0.0
+12          24           0            56                0.0
+13          21          19             2                0.0
+14          19          12             1                0.0
+15          22           3            25                0.0
+16          18           4             6                0.0
+17          18           0             4                0.0
+18          34          14             3                0.0
+19          47          18             3                0.0
+20          14          14             0                0.0
+21          24           1             1                0.0
+22          18          18             0                0.0
+
+first mismatches:
+      campaign                     region_id  chrom  old_i0  new_i0  old_n  new_n  centre_in_panel  same_index  same_count
+ baseline_n300  regular_chr1_88977276_s00001      1  688210  688238   7432   7432             True       False        True
+ baseline_n300 regular_chr1_183611429_s00030      1 1225746 1225777   7522   7522             True       False        True
+ baseline_n300 regular_chr1_237426562_s00038      1 1654877 1654910   8491   8491             True       False        True
+ baseline_n300 regular_chr1_241599990_s00064      1 1692102 1692135   8515   8515             True       False        True
+ baseline_n300 regular_chr1_196403044_s00093      1 1328810 1328841   8144   8144             True       False        True
+   effect_size regular_chr1_168346145_s00020      1 1107627 1107658   8416   8416             True       False        True
+   effect_size  regular_chr1_46441990_s00029      1  363482  363510   6966   6966             True       False        True
+   effect_size  regular_chr1_96787208_s00041      1  745648  745676   7634   7634             True       False        True
+   effect_size regular_chr1_218549058_s00023      1 1502181 1502212   8718   8718             True       False        True
+estimand_check  regular_chr1_88977276_s00001      1  688210  688238   7432   7432             True       False        True
+estimand_check regular_chr1_237426562_s00038      1 1654877 1654910   8491   8491             True       False        True
+estimand_check regular_chr1_183611429_s00030      1 1225746 1225777   7522   7522             True       False        True
+estimand_check regular_chr1_241599990_s00064      1 1692102 1692135   8515   8515             True       False        True
+estimand_check regular_chr1_196403044_s00093      1 1328810 1328841   8144   8144             True       False        True
+       high_ld    high_chr1_118888905_s00024      1  915962  915990   7443   7443             True       False        True
+== b) unit tests + SuSiE estimand
+...............                                                          [100%]
+15 passed in 23.54s
+ok: h2_full == tr(R E[bb']) and collapses to the trace form at R = I
+== c) smoke campaign (new run name so the archived results/smoke stays untouched)
+campaign      : smoke_expanse
+fingerprint   : d6b8c0b63110
+run dir       : /home/sux002/work/cis_heritability/results/smoke_expanse
+LD arch       : regular   LD for SuSiE: panel
+grid          : n=[300] ncausal=[1, 5]
+                h2=[0.05, 0.4] dist=['normal'] maf=['all']
+cells/region  : 4
+regions       : 4
+total cells   : 16
+workers       : 4 x 1 thread(s)
+already done  : 0 slots
+2026-10-28 03:35:31 INFO    campaign smoke_expanse (fingerprint d6b8c0b63110)
+2026-10-28 03:35:31 INFO    grid: 4 cells/region x 4 regions = 16 cells | 0 already done, 4 to run
+2026-10-28 03:35:31 INFO    workers=4 threads/worker=1 scratch=/scratch/sux002/job_55354052/cish2-smoke_expanse-sux002 (933 GB free)
+2026-10-28 03:35:32 INFO    bim index ready for 2 chromosomes
+2026-10-28 03:35:34 INFO    [1/4] slot 1 ok in 2.6s | 4 rows | 0.0 min elapsed, ETA 0.1 min
+2026-10-28 03:35:35 INFO    [2/4] slot 2 ok in 2.9s | 8 rows | 0.1 min elapsed, ETA 0.1 min
+2026-10-28 03:35:37 INFO    [3/4] slot 3 ok in 4.8s | 12 rows | 0.1 min elapsed, ETA 0.0 min
+2026-10-28 03:35:40 INFO    [4/4] slot 0 ok in 7.7s | 16 rows | 0.1 min elapsed, ETA 0.0 min
+2026-10-28 03:35:40 INFO    done: 4 regions ok, 0 failed, 16 rows in 0.1 min
+2026-10-28 03:35:40 INFO    consolidated -> /home/sux002/work/cis_heritability/results/smoke_expanse/cells.tsv.gz

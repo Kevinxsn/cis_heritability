@@ -335,6 +335,19 @@ def run_gcta(gcta, out):
     # subprocess.run(command.split())
 
 
+def resolve_exe(exe_name_or_path: str) -> str:
+    # If user passed a path, use it; otherwise search PATH
+    if os.path.sep in exe_name_or_path:
+        return exe_name_or_path
+    resolved = shutil.which(exe_name_or_path)
+    if resolved is None:
+        raise RuntimeError(
+            f"Cannot find executable '{exe_name_or_path}' on PATH. "
+            f"Install it (e.g., conda install -c bioconda plink) or pass a full path."
+        )
+    return resolved
+
+
 def arg_parser():
     parser = argparse.ArgumentParser(
         prog='Build Simulations for heritability analysis: SuSiE vs GCTA',
@@ -342,8 +355,10 @@ def arg_parser():
          vs GCTA heritability estimates. We simulate for eQTLs with different
          gene heritabilities as well as different number of causal SNPs.'''
     )
-    parser.add_argument("--plink_path", required=True,
+    parser.add_argument("--plink", default="plink",
                         type=str, help="Path to plink binary file")
+    parser.add_argument("--gcta", default="gcta64",
+                        help="gcta executable name or full path (default: gcta64 on PATH)")
     parser.add_argument('--geno_prefix', required=True,
                         type=str, help="Path to geno file")
     parser.add_argument('--tmpdir', required=True,
@@ -367,6 +382,8 @@ def create_directory(directory):
 
 def main():
     args = arg_parser()
+    plink_exe = resolve_exe(args.plink)
+    gcta_exe  = resolve_exe(args.gcta)
 
     rgenes_folder = os.path.join(args.tmpdir, 'rgenes')
     create_directory(rgenes_folder)
@@ -391,7 +408,7 @@ def main():
 
     # TODO: Change to 1000.
     for i in range(25):
-        random_gene, chr = pick_rand_gene(args.plink_path,
+        random_gene, chr = pick_rand_gene(plink_exe,
                                           args.geno_prefix, rgenes_folder)
         bim, L = get_ld(random_gene)
         for cNUM_PEOPLE in NUM_PEOPLE:
@@ -404,14 +421,14 @@ def main():
                     h2g, hsq_se, hsq_p = get_gcta_hsq(Z,
                                                       gexpr,
                                                       os.path.join(gcta_path_directory, curr_gene),
-                    "/expanse/lustre/projects/ddp412/sgolzari/MAGEPRO/fusion_twas-master/gcta_nr_robust")
+                                                      gcta_exe)
                     build_susie_sumstats(bim,
                                          Z, 
                                          gexpr,
                                          sumstats_path,
                                          ld_path_directory,
                                          curr_gene,
-                                         args.geno_prefix + chr,args.plink_path, 
+                                         args.geno_prefix + chr,plink_exe, 
                                          cNUM_PEOPLE)
 
                     with open(output_txt, "a") as f:

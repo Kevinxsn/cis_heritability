@@ -1,0 +1,7 @@
+campaign,regions,cells,median_p,axes,ld_for_susie
+baseline_n300,100,2990,8175,"ncausal, h2_true",panel
+effect_size,50,4480,8416,"ncausal, h2_true, effect_dist",panel
+high_ld,50,1485,8043,"ncausal, h2_true",panel
+low_ld,50,1493,10140,"ncausal, h2_true",panel
+maf_arch,50,2398,8316,"ncausal, h2_true, maf_bin",panel
+sample_size,50,7448,8335,"n, ncausal, h2_true",panel

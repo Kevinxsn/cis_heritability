@@ -1,0 +1,28 @@
+PLINK v1.9.0-b.8 64-bit (22 Oct 2024)
+Options in effect:
+  --bfile /projects/ps-renlab2/sux002/data/test_gene_region
+  --extract temp_sumstats.txt
+  --ld-window-r2 0
+  --out temp_ld
+  --r inter-chr
+
+Hostname: mediator.sdsc.edu
+Working directory: /mnt/tscc2/sux002/cis_heritability/simulations
+Start time: Thu Feb  5 04:46:12 2026
+
+Random number seed: 1770295572
+4116324 MB RAM detected; reserving 2058162 MB for main workspace.
+7714 variants loaded from .bim file.
+503 people (240 males, 263 females) loaded from .fam.
+--extract: 7714 variants remaining.
+Using up to 255 threads (change this with --threads).
+Before main variant filters, 503 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is in [0.9999995, 1).
+7714 variants and 503 people pass filters and QC.
+Note: No phenotypes present.
+Running --r inter-chr with the following filter:
+  --ld-window-r2: 0
+--r inter-chr to temp_ld.ld ... done.
+
+End time: Thu Feb  5 04:46:33 2026

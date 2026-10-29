@@ -1,0 +1,59 @@
+Fetch Shard Index for conda-forge/linux-64                                                      ⧖ Starting
+Fetch Shard Index for conda-forge/linux-64                                                ✔ Done (0.1 sec)
+Fetch Shard Index for conda-forge/noarch                                                        ⧖ Starting
+Fetch Shard Index for conda-forge/noarch                                                  ✔ Done (0.2 sec)
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                    ✔ Done (46.5 sec)
+Fetch Shard Index for bioconda/linux-64                                                         ⧖ Starting
+Fetch Shard Index for bioconda/linux-64                                                   ✔ Done (0.2 sec)
+Fetch Shard Index for bioconda/noarch                                                           ⧖ Starting
+Fetch Shard Index for bioconda/noarch                                                     ✔ Done (0.5 sec)
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (3.4 sec)
+Using Cached Shard Index for conda-forge/linux-64                                                   ✔ Done
+Using Cached Shard Index for conda-forge/noarch                                                     ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (3.9 sec)
+Using Cached Shard Index for bioconda/linux-64                                                      ✔ Done
+Using Cached Shard Index for bioconda/noarch                                                        ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (0.2 sec)
+
+Resolving Environment                                                                           ⧖ Starting
+Resolving Environment                                                                     ✔ Done (3.6 sec)
+Using Cached Shard Index for conda-forge/linux-64                                                   ✔ Done
+Using Cached Shard Index for conda-forge/noarch                                                     ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (1.4 sec)
+Using Cached Shard Index for bioconda/linux-64                                                      ✔ Done
+Using Cached Shard Index for bioconda/noarch                                                        ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (0.0 sec)
+Using Cached Shard Index for conda-forge/linux-64                                                   ✔ Done
+Using Cached Shard Index for conda-forge/noarch                                                     ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (1.4 sec)
+Using Cached Shard Index for bioconda/linux-64                                                      ✔ Done
+Using Cached Shard Index for bioconda/noarch                                                        ✔ Done
+Fetching and Parsing Packages' Shards                                                           ⧖ Starting
+Fetching and Parsing Packages' Shards                                                     ✔ Done (0.0 sec)
+
+Resolving Environment                                                                           ⧖ Starting
+Resolving Environment                                                                     ✔ Done (3.5 sec)
+error    libmamba Could not solve for environment specs
+    The following packages are incompatible
+    ├─ pandas-plink =2.2.9 * is installable and it requires
+    │  └─ xarray >=0.18.2 * with the potential options
+    │     ├─ xarray [2022.10.0|2022.11.0|2022.12.0|2023.1.0] would require
+    │     │  └─ pandas >=1.3,<2a0 *, which can be installed;
+    │     ├─ xarray [2022.6.0|2022.9.0] would require
+    │     │  └─ pandas >=1.2,<2a0 *, which can be installed;
+    │     ├─ xarray [0.20.0|0.20.1|...|2022.6.0] would require
+    │     │  └─ pandas >=1.1,<2a0 *, which can be installed;
+    │     ├─ xarray 0.19.0 would require
+    │     │  └─ pandas >=1.0,<2a0 *, which can be installed;
+    │     └─ xarray [0.18.2|0.19.0] would require
+    │        └─ pandas >=0.25,<2a0 *, which can be installed;
+    ├─ pandas =2.0.3 * is not installable because it conflicts with any installable versions previously reported;
+    └─ python-pptx =1.0.2 * does not exist (perhaps a typo or a missing channel).
+critical libmamba Could not solve for environment specs

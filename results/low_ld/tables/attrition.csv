@@ -1,0 +1,5 @@
+estimator,cells,failed,failed_pct,reasons
+GCTA,1500,7,0.4666666666666667,"An error occurs, please check the options or data (7)"
+SuSiE,1500,0,0.0,
+HEELS,1500,0,0.0,
+retries,1500,0,0.0,cells needing >1 simulation attempt

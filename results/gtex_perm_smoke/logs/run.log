@@ -1,0 +1,10 @@
+2026-10-28 11:23:55 INFO    loading GTEx dataset ...
+2026-10-28 11:23:58 INFO    574 samples with genotype + expression + covariates; 19696 genes; 69 covariates
+2026-10-28 11:23:58 INFO    disjoint splits: ['split1', 'split2'] (sizes [287, 287]) - no donor is in two splits
+2026-10-28 11:23:58 INFO    200 genes in 4 chunks | 0 already done, 4 to run | workers=32 | scratch=/scratch/sux002/job_55364986/cish2-gtex_perm_smoke-sux002 (933 GB free)
+2026-10-28 11:24:21 INFO    [1/4] chunk 3 ok in 23.3s | 98 rows | 0.4 min elapsed, ETA 1.2 min
+2026-10-28 11:24:22 INFO    [2/4] chunk 2 ok in 24.2s | 198 rows | 0.4 min elapsed, ETA 0.4 min
+2026-10-28 11:24:22 INFO    [3/4] chunk 0 ok in 24.3s | 296 rows | 0.4 min elapsed, ETA 0.1 min
+2026-10-28 11:24:25 INFO    [4/4] chunk 1 ok in 26.9s | 396 rows | 0.4 min elapsed, ETA 0.0 min
+2026-10-28 11:24:25 INFO    done: 4 chunks ok, 0 empty, 0 failed, 396 rows in 0.4 min
+2026-10-28 11:24:25 INFO    consolidated -> /home/sux002/work/cis_heritability/results/gtex_perm_smoke/cells.tsv.gz

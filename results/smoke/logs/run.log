@@ -1,0 +1,10 @@
+2026-09-08 15:14:44 INFO    campaign smoke (fingerprint 62176dbd8773)
+2026-09-08 15:14:44 INFO    grid: 4 cells/region x 4 regions = 16 cells | 0 already done, 4 to run
+2026-09-08 15:14:44 INFO    workers=4 threads/worker=1 scratch=/data/tmp/cish2-smoke-sux002 (3079 GB free)
+2026-09-08 15:14:44 INFO    bim index ready for 2 chromosomes
+2026-09-08 15:14:49 INFO    [1/4] slot 1 ok in 4.7s | 4 rows | 0.1 min elapsed, ETA 0.2 min
+2026-09-08 15:14:49 INFO    [2/4] slot 3 ok in 4.9s | 8 rows | 0.1 min elapsed, ETA 0.1 min
+2026-09-08 15:14:49 INFO    [3/4] slot 2 ok in 5.0s | 12 rows | 0.1 min elapsed, ETA 0.0 min
+2026-09-08 15:14:49 INFO    [4/4] slot 0 ok in 5.1s | 16 rows | 0.1 min elapsed, ETA 0.0 min
+2026-09-08 15:14:50 INFO    done: 4 regions ok, 0 failed, 16 rows in 0.1 min
+2026-09-08 15:14:50 INFO    consolidated -> /projects/ps-renlab2/sux002/cis_heritability/results/smoke/cells.tsv.gz

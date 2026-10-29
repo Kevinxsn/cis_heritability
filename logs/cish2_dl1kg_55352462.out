@@ -1,0 +1,14 @@
+EUR samples: 503
+ok chr4 973M
+ok chr1 1.1G
+ok chr3 960M
+ok chr2 1.2G
+
+gzip: ALL.chr5.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz: invalid compressed data--crc error
+
+gzip: ALL.chr5.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz: invalid compressed data--length error
+corrupt chr5 -- restarting from zero
+ok chr6 870M
+ok chr7 2.0G
+ok chr8 748M
+slurmstepd: error: *** JOB 55352462 ON exp-9-55 CANCELLED AT 2026-10-28T02:21:44 DUE TO TIME LIMIT ***

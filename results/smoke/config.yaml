@@ -1,0 +1,60 @@
+name: smoke
+seed: 1
+n_regions: 4
+results_root: /projects/ps-renlab2/sux002/cis_heritability/results
+description: End-to-end smoke test of the whole pipeline.
+data:
+  geno_prefix: /projects/ps-renlab2/sux002/data/1000G.EUR.
+  chromosomes:
+  - 21
+  - 22
+  window_bp: 50000
+  min_snps: 50
+  max_snps: 3000
+region:
+  ld_arch: regular
+  r2_threshold: 0.8
+  frac_min: 0.02
+  frac_max: 0.001
+  score_max_snps: 500
+  max_draws: 500
+grid:
+  n_individuals:
+  - 300
+  ncausal:
+  - 1
+  - 5
+  h2:
+  - 0.05
+  - 0.4
+  effect_dist:
+  - normal
+  maf_bin:
+  - all
+method:
+  ld_regularization: 0.1
+  ld_for_susie: panel
+  legacy_ambiguous_filter: true
+  rescale_beta: true
+  causal_replace: false
+  susie_L: 10
+  susie_max_iter: 100
+  susie_coverage: 0.95
+  max_retries: 2
+  run_gcta: true
+  run_susie: true
+  run_heels: true
+  gcta_reml_no_constrain: true
+  heels_tol: 1.0e-05
+  heels_max_iter: 200
+  heels_init_h2: 0.25
+compute:
+  workers: 4
+  threads_per_worker: 1
+  scratch_root: null
+  plink: plink
+  gcta: gcta64
+  rscript: Rscript
+  keep_scratch: false
+  flush_every: 1
+  task_timeout_s: 7200

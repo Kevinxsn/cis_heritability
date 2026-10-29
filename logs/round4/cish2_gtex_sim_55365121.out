@@ -1,0 +1,5 @@
+2026-10-28 11:34:06 INFO    loading GTEx dataset ...
+2026-10-28 11:34:09 INFO    574 samples with genotype + expression + covariates; 19696 genes; 69 covariates
+2026-10-28 11:34:09 INFO    disjoint splits: ['split1', 'split2'] (sizes [287, 287]) - no donor is in two splits
+2026-10-28 11:34:09 INFO    19696 genes in 394 chunks | 0 already done, 394 to run | workers=64 | scratch=/scratch/sux002/job_55365121/cish2-gtex_sim_split_half-sux002 (933 GB free)
+slurmstepd: error: *** JOB 55365121 ON exp-2-53 CANCELLED AT 2026-10-28T11:34:11 ***

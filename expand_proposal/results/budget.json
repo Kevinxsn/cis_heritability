@@ -1,0 +1,133 @@
+{
+  "fit": {
+    "wall_a": 3.4630396969328556e-05,
+    "wall_b": 1.66,
+    "mem_a": 1.460606588929224e-06,
+    "mem_b": 1.63
+  },
+  "xval": {
+    "pred_grid_s": 197.9,
+    "obs_grid_s": 218.64,
+    "err_pct": -9.5
+  },
+  "per_model": {
+    "1000": {
+      "wall_s": 3.2,
+      "mem_gb": 0.11,
+      "mem_cores": 1,
+      "corehr": 0.0009
+    },
+    "1544": {
+      "wall_s": 6.6,
+      "mem_gb": 0.23,
+      "mem_cores": 1,
+      "corehr": 0.0018
+    },
+    "3000": {
+      "wall_s": 19.8,
+      "mem_gb": 0.68,
+      "mem_cores": 1,
+      "corehr": 0.0055
+    },
+    "3567": {
+      "wall_s": 26.4,
+      "mem_gb": 0.9,
+      "mem_cores": 1,
+      "corehr": 0.0073
+    },
+    "5000": {
+      "wall_s": 46.2,
+      "mem_gb": 1.56,
+      "mem_cores": 1,
+      "corehr": 0.0128
+    },
+    "8000": {
+      "wall_s": 100.5,
+      "mem_gb": 3.37,
+      "mem_cores": 2,
+      "corehr": 0.0558
+    },
+    "8227": {
+      "wall_s": 105.3,
+      "mem_gb": 3.52,
+      "mem_cores": 2,
+      "corehr": 0.0585
+    },
+    "17287": {
+      "wall_s": 360.0,
+      "mem_gb": 11.82,
+      "mem_cores": 6,
+      "corehr": 0.6
+    }
+  },
+  "models_per_locus": 2700,
+  "one_full_sweep_corehr": 14857,
+  "budget": [
+    {
+      "name": "Simulation: full architecture sweeps (method development)",
+      "models": 16200000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 89143
+    },
+    {
+      "name": "Simulation: targeted single-axis campaigns",
+      "models": 1200000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 6603
+    },
+    {
+      "name": "Simulation: high-memory large-window stress tests",
+      "models": 150000,
+      "p": 8227,
+      "core_eq": 2,
+      "core_hours": 8773
+    },
+    {
+      "name": "Real data: GTEx cis-h2 (GCTA)",
+      "models": 980000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 5393
+    },
+    {
+      "name": "Real data: GTEx cis-h2 (SuSiE)",
+      "models": 980000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 5393
+    },
+    {
+      "name": "Real data: GTEx cis-h2 (HEELS, 3rd method)",
+      "models": 980000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 5393
+    },
+    {
+      "name": "Multi-ancestry replication (5 panels, sim+real subset)",
+      "models": 250000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 1376
+    },
+    {
+      "name": "GWAS-trait locus fine-mapping",
+      "models": 150000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 825
+    },
+    {
+      "name": "Large scRNA-seq atlas extension (e.g. TenK10K-scale)",
+      "models": 600000,
+      "p": 3000,
+      "core_eq": 1,
+      "core_hours": 3302
+    }
+  ],
+  "retries_ch": 12620,
+  "margin_ch": 25240,
+  "total_ch": 164058
+}

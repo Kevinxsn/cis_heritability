@@ -1,0 +1,37 @@
+(6348 variants skipped.)
+1055454 out of 1097199 variants loaded from .bim file.
+2504 people (0 males, 0 females, 2504 ambiguous) loaded from .fam.
+--keep: 503 people remaining.
+1055454 variants and 503 people pass filters and QC.
+raw chr22 variants: 1,055,454   old window: 17,287   old chr22 total: 308,143
+ rs_only  drop_dup_pos       freq  chr22_total  window  only_new  only_old  a1_match  total_diff
+    True         False     mac>=1            0       0         0     17287       NaN     -308143
+    True         False     mac>=2            0       0         0     17287       NaN     -308143
+    True         False maf>=0.005            0       0         0     17287       NaN     -308143
+    True         False  maf>=0.01            0       0         0     17287       NaN     -308143
+    True         False  maf>=0.05            0       0         0     17287       NaN     -308143
+    True          True     mac>=1            0       0         0     17287       NaN     -308143
+    True          True     mac>=2            0       0         0     17287       NaN     -308143
+    True          True maf>=0.005            0       0         0     17287       NaN     -308143
+    True          True  maf>=0.01            0       0         0     17287       NaN     -308143
+    True          True  maf>=0.05            0       0         0     17287       NaN     -308143
+   False         False     mac>=1       308144   17288         1         0    0.9998           1
+   False          True     mac>=1       308144   17288         1         0    0.9998           1
+   False         False     mac>=2       188457   11192         1      6096    0.9997     -119686
+   False          True     mac>=2       188457   11192         1      6096    0.9997     -119686
+   False         False maf>=0.005       138384    8411         1      8877    0.9996     -169759
+   False          True maf>=0.005       138384    8411         1      8877    0.9996     -169759
+   False         False  maf>=0.01       121435    7335         1      9953    0.9996     -186708
+   False          True  maf>=0.01       121435    7335         1      9953    0.9996     -186708
+   False         False  maf>=0.05        85250    4900         1     12388    0.9994     -222893
+   False          True  maf>=0.05        85250    4900         1     12388    0.9994     -222893
+
+mac>=1 window, in new only:
+       chr               id  cm       pos a1 a2    maf  mac
+44610   22  22:18003597:A:G   0  18003597  A  G  0.166  167
+in old only: []
+
+mac>=1 chr22 positions seen twice: 0
+Empty DataFrame
+Columns: [chr, id, cm, pos, a1, a2, maf, mac]
+Index: []

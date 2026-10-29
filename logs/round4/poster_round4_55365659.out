@@ -1,0 +1,274 @@
+===== pass 1: round 3, unchanged commands
+
+A. Agreement vs GCTA (GTEx Whole Blood)
+  n estimator  genes  mean_diff  sd_diff  loa_lo  loa_hi   rmse  pearson  slope  intercept
+100     CHEWS  19162    -0.0150   0.0775 -0.1670  0.1370 0.0790   0.8145 0.6657     0.0143
+100     HEELS  19162    -0.0156   0.0208 -0.0564  0.0252 0.0260   0.9968 0.8603    -0.0034
+200     CHEWS  19126    -0.0107   0.0498 -0.1083  0.0869 0.0509   0.9071 0.8857    -0.0019
+200     HEELS  19126    -0.0115   0.0146 -0.0402  0.0172 0.0186   0.9987 0.8861    -0.0028
+300     CHEWS  18824    -0.0091   0.0594 -0.1254  0.1073 0.0600   0.8810 1.0145    -0.0102
+300     HEELS  18824    -0.0110   0.0135 -0.0375  0.0156 0.0174   0.9990 0.8963    -0.0027
+450     CHEWS  18747    -0.0076   0.0551 -0.1157  0.1004 0.0557   0.9024 1.0244    -0.0096
+450     HEELS  18747    -0.0096   0.0115 -0.0321  0.0130 0.0150   0.9993 0.9136    -0.0025
+574     CHEWS  19169    -0.0068   0.0572 -0.1189  0.1053 0.0576   0.8966 1.0644    -0.0119
+574     HEELS  19169    -0.0074   0.0089 -0.0248  0.0101 0.0116   0.9996 0.9322    -0.0020
+
+B. CHEWS - GCTA in half B, stratified on half A (disjoint donors)
+h2_bin      0–.05  .05–.1   .1–.2   .2–.4    .4–1
+clump_bin                                        
+0         -0.0044 -0.0095 -0.0086     NaN     NaN
+1         -0.0039 -0.0108 -0.0142 -0.0168  0.0032
+2         -0.0130 -0.0126 -0.0178 -0.0236 -0.0372
+3             NaN     NaN -0.0133 -0.0237 -0.0220
+4+            NaN     NaN     NaN -0.0199 -0.0307
+
+   genes per cell
+h2_bin     0–.05  .05–.1  .1–.2  .2–.4  .4–1
+clump_bin                                   
+0           9572    1170    238      6     0
+1           1192    1524   1407    449    71
+2             50     253    688    594   132
+3              2      14    155    348   179
+4+             0       0     19    178   263
+
+   same-half (coupled) version, for comparison
+h2_bin      0–.05  .05–.1   .1–.2   .2–.4    .4–1
+clump_bin                                        
+0          0.0011 -0.0375 -0.0849     NaN     NaN
+1          0.0265 -0.0055 -0.0241 -0.0410 -0.0985
+2          0.0323 -0.0038 -0.0200 -0.0376 -0.0453
+3             NaN     NaN -0.0108 -0.0376 -0.0553
+4+            NaN     NaN     NaN -0.0087 -0.0318
+
+   mean |coupled - disjoint| = 0.0234
+
+C. Split-half reliability under three gene-selection rules
+                                  gene_set estimator  genes  pearson    icc   rmsd
+                     all genes (no filter)      GCTA  18504   0.8646 0.8646 0.0636
+                     all genes (no filter)     CHEWS  19432   0.9118 0.9116 0.0490
+                     all genes (no filter)     HEELS  19432   0.8699 0.8699 0.0551
+prespecified: >=1 cis-eQTL in the full 574      GCTA   9665   0.8497 0.8497 0.0792
+prespecified: >=1 cis-eQTL in the full 574     CHEWS  10145   0.8984 0.8982 0.0644
+prespecified: >=1 cis-eQTL in the full 574     HEELS  10145   0.8569 0.8569 0.0693
+    post-hoc: h2>0.05 in all six estimates      GCTA   4171   0.8478 0.8478 0.0852
+    post-hoc: h2>0.05 in all six estimates     CHEWS   4171   0.8921 0.8919 0.0772
+    post-hoc: h2>0.05 in all six estimates     HEELS   4171   0.8553 0.8553 0.0773
+
+   CHEWS - GCTA split-half r, prespecified set: +0.0498 (95% bootstrap CI +0.0383 to +0.0631, 9665 genes)
+
+D. Gene inclusion flow (GTEx Whole Blood)
+   genes with expression, genotypes and covariates : 19,432
+   n = 100:  attempted 19,432   GCTA ok 19,162   CHEWS ok 19,432   HEELS ok 19,432   all three 19,162
+   n = 200:  attempted 19,432   GCTA ok 19,126   CHEWS ok 19,432   HEELS ok 19,432   all three 19,126
+   n = 300:  attempted 19,432   GCTA ok 18,824   CHEWS ok 19,432   HEELS ok 19,432   all three 18,824
+   n = 450:  attempted 19,432   GCTA ok 18,747   CHEWS ok 19,432   HEELS ok 19,432   all three 18,747
+   n = 574:  attempted 19,432   GCTA ok 19,169   CHEWS ok 19,432   HEELS ok 19,432   all three 19,169
+building poster figures -> /home/sux002/work/cis_heritability/poster/figures
+  wrote figures/P1_polygenicity.png
+  wrote figures/P2_win_landscape.png
+  wrote figures/P3_sample_size.png
+  wrote figures/P4_architecture.png
+  wrote figures/P5_gtex_sample_size.png
+  wrote figures/P6_gtex_architecture.png
+  wrote figures/P7_reliability.png
+  wrote figures/P0_workflow.png
+  wrote figures/P1_bias_only.png
+  wrote figures/P5_agreement.png
+  wrote figures/P6_strata_compare.png
+  wrote figures/P7_reliability_sets.png
+done
+
+  !! QR code still points at a placeholder (https://github.com/).
+     Set QR_URL and QR_URL_TEXT, regenerate figures/qr.png, and
+     re-run before printing. The URL line is hidden until then.
+
+
+sheet 36 x 48 in   column width 11.07 in   body 9.95–47.40 in
+  column 1: 13 blocks, ends at 44.06 in, slack +3.34 in   [OK ]
+  column 2: 11 blocks, ends at 46.85 in, slack +0.55 in   [OK ]
+  column 3: 13 blocks, ends at 46.13 in, slack +1.27 in   [OK ]
+wrote XuS_IGVF2026_poster.pptx
+wrote poster_proof.png
+===== round-3 outputs vs pre-round-4 checksums
+md5sum: poster/figures/P0_workflow.png: No such file or directory
+poster/figures/P0_workflow.png: FAILED open or read
+md5sum: poster/figures/P1_bias_only.png: No such file or directory
+poster/figures/P1_bias_only.png: FAILED open or read
+md5sum: poster/figures/P1_polygenicity.png: No such file or directory
+poster/figures/P1_polygenicity.png: FAILED open or read
+md5sum: poster/figures/P2_win_landscape.png: No such file or directory
+poster/figures/P2_win_landscape.png: FAILED open or read
+md5sum: poster/figures/P3_sample_size.png: No such file or directory
+poster/figures/P3_sample_size.png: FAILED open or read
+md5sum: poster/figures/P4_architecture.png: No such file or directory
+poster/figures/P4_architecture.png: FAILED open or read
+md5sum: poster/figures/P5_agreement.png: No such file or directory
+poster/figures/P5_agreement.png: FAILED open or read
+md5sum: poster/figures/P5_gtex_sample_size.png: No such file or directory
+poster/figures/P5_gtex_sample_size.png: FAILED open or read
+md5sum: poster/figures/P6_gtex_architecture.png: No such file or directory
+poster/figures/P6_gtex_architecture.png: FAILED open or read
+md5sum: poster/figures/P6_strata_compare.png: No such file or directory
+poster/figures/P6_strata_compare.png: FAILED open or read
+md5sum: poster/figures/P7_reliability.png: No such file or directory
+poster/figures/P7_reliability.png: FAILED open or read
+md5sum: poster/figures/P7_reliability_sets.png: No such file or directory
+poster/figures/P7_reliability_sets.png: FAILED open or read
+md5sum: poster/figures/P8_estimand.png: No such file or directory
+poster/figures/P8_estimand.png: FAILED open or read
+md5sum: poster/figures/qr.png: No such file or directory
+poster/figures/qr.png: FAILED open or read
+md5sum: poster/tables/gap_coupled_strata.csv: No such file or directory
+poster/tables/gap_coupled_strata.csv: FAILED open or read
+md5sum: poster/tables/gap_disjoint_counts.csv: No such file or directory
+poster/tables/gap_disjoint_counts.csv: FAILED open or read
+md5sum: poster/tables/gap_disjoint_sem.csv: No such file or directory
+poster/tables/gap_disjoint_sem.csv: FAILED open or read
+md5sum: poster/tables/gap_disjoint_strata.csv: No such file or directory
+poster/tables/gap_disjoint_strata.csv: FAILED open or read
+md5sum: poster/tables/gtex_agreement.csv: No such file or directory
+poster/tables/gtex_agreement.csv: FAILED open or read
+md5sum: poster/tables/reliability_by_gene_set.csv: No such file or directory
+poster/tables/reliability_by_gene_set.csv: FAILED open or read
+md5sum: poster/poster_proof.png: No such file or directory
+poster/poster_proof.png: FAILED open or read
+md5sum: poster/XuS_IGVF2026_poster.pptx: No such file or directory
+poster/XuS_IGVF2026_poster.pptx: FAILED open or read
+md5sum: WARNING: 22 listed files could not be read
+!! some round-3 outputs differ (see above)
+===== pass 2: round 4
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+revision_analyses.py:653: RuntimeWarning: All-NaN slice encountered
+  win_hi=bm["win_hi"][j], win_min=np.nanmin(rates), win_max=np.nanmax(rates),
+revision_analyses.py:654: RuntimeWarning: All-NaN slice encountered
+  ci_min=np.nanmin(los), ci_max=np.nanmax(his),
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+/home/sux002/miniforge3/envs/cish2/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1577: RuntimeWarning: All-NaN slice encountered
+  result = np.apply_along_axis(_nanquantile_1d, axis, a, q,
+
+E. Pairwise win rate (CHEWS closer to truth) by causal SNPs x n
+n        100   300   500   800   1000
+ncausal                              
+1        82.0  81.0  78.0  78.0  75.0
+3        65.0  64.0  62.0  62.0  64.0
+5        64.0  57.0  54.0  61.0  57.0
+10       53.0  41.0  37.0  40.0  43.0
+20       40.0  28.0  24.0  23.0  24.0
+
+   relative MAE change, MAE_C / MAE_G - 1 (%)
+n        100   300    500   800   1000
+ncausal                               
+1       -73.0 -65.0  -61.0 -57.0 -58.0
+3       -49.0 -42.0  -32.0 -33.0 -36.0
+5       -35.0 -16.0  -11.0   4.0 -19.0
+10       -5.0  19.0   31.0  29.0  14.0
+20       24.0  91.0  112.0  94.0  91.0
+
+   cells whose 95% CI excludes 50%: 23 of 25
+   paired fits per cell: 290 - 300
+
+F. Permutation null (true h2 = 0 on real expression)
+                                            scope estimator  genes   mean  median    p90  pct_at_floor
+                                all genes, split1      GCTA  18778 0.0132  0.0000 0.0450       57.3863
+                                all genes, split2      GCTA  18664 0.0133  0.0000 0.0452       56.2741
+                                all genes, split1     CHEWS  19432 0.0129  0.0086 0.0321       40.2841
+                                all genes, split2     CHEWS  19432 0.0129  0.0089 0.0320       39.3989
+                                all genes, split1     HEELS  19432 0.0109  0.0000 0.0371       64.3114
+                                all genes, split2     HEELS  19432 0.0110  0.0000 0.0370       63.6527
+half B | permuted half-A stratum 0 signals, 0–.05      GCTA  16112 0.0131  0.0000 0.0447       56.2376
+half B | permuted half-A stratum 0 signals, 0–.05     CHEWS  16112 0.0127  0.0087 0.0317       40.0074
+half B | permuted half-A stratum 1 signals, 0–.05      GCTA    876 0.0133  0.0000 0.0441       56.9635
+half B | permuted half-A stratum 1 signals, 0–.05     CHEWS    876 0.0140  0.0099 0.0347       36.1872
+
+   Storey-type pi0 per real stratum (E = REML at the bound, half B; real strata from half A)
+h2_bin     0–.05  .05–.1  .1–.2  .2–.4  .4–1
+clump_bin                                   
+0          0.729   0.499  0.485  1.000   NaN
+1          0.486   0.289  0.163  0.031   0.0
+2          0.429   0.301  0.095  0.018   0.0
+3          1.000   0.250  0.084  0.000   0.0
+4+           NaN     NaN  0.000  0.000   0.0
+   all genes: pi0 = 0.495  (sensitivity: p>0.25 -> 0.554, p>0.1 -> 0.622)
+
+G. simulated genes (gene x draw) with both halves: 38,864 (19,432 genes)
+   calibration: 480 priors, best S = 203.0 over 36 terms, tolerance 48.0, 2 acceptable
+   best: {'pi0': 0.1, 'h2_scale': 0.5, 'q': 1.0, 'S': 202.97281442246174, 'chi_gap': 98.86433511438752, 'chi_cnt': 104.10847930807421, 'sign_agree': 0.9444444444444444, 'mad_gap': 0.013881675429735032, 'tvd': 0.021538284896769143}
+   acceptable pi0 range 0.1-0.1, h2_scale [0.5], q [0.75, 1.0]
+   rule 1 (calibration): FAILS
+     ok   sign agreement = 0.9444 (needs >= 0.8)
+     FAIL mean |sim - real| gap = 0.0139 (needs <= 0.01)
+     ok   TVD of stratum shares = 0.0215 (needs <= 0.15)
+
+   best-prior win rate (% CHEWS closer to truth), half B by half-A stratum
+h2_bin     0–.05  .05–.1  .1–.2  .2–.4  .4–1
+clump_bin                                   
+0           60.0    59.0   56.0   39.0   NaN
+1           63.0    61.0   57.0   60.0  68.0
+2           67.0    61.0   53.0   54.0  59.0
+3          100.0    49.0   47.0   47.0  57.0
+4+           NaN     NaN   57.0   42.0  36.0
+
+   0-0.05 column:
+clump_bin  real_genes       ess   win  win_lo  win_hi  win_min  win_max  ci_min  ci_max  win_resid                rule
+        0        9572 16536.321 0.599   0.591   0.606    0.599    0.600   0.591   0.608      0.597  2: closer to truth
+        1        1192  1924.463 0.626   0.606   0.647    0.626    0.638   0.606   0.661      0.620  2: closer to truth
+        2          50    74.658 0.668   0.568   0.759    0.668    0.677   0.565   0.773      0.681  2: closer to truth
+        3           2     1.000 1.000   1.000   1.000    1.000    1.000   1.000   1.000      1.000  2: closer to truth
+       4+           0       NaN   NaN     NaN     NaN      NaN      NaN     NaN     NaN        NaN 4: depends on prior
+clump_bin h2_bin        ess  truth  mean_gcta  mean_chews  bias_gcta  bias_chews  mae_gcta  mae_chews  mae_diff     gap  real_gap  mean_gcta_uc  bias_gcta_uc  win_vs_gcta_uc
+        0  0–.05 16536.3213 0.0162     0.0255      0.0209     0.0093      0.0046    0.0221     0.0156   -0.0065 -0.0046   -0.0044        0.0202        0.0039          0.7708
+        1  0–.05  1924.4626 0.0446     0.0472      0.0440     0.0025     -0.0006    0.0340     0.0231   -0.0109 -0.0032   -0.0039        0.0442       -0.0005          0.7252
+        2  0–.05    74.6581 0.0583     0.0553      0.0459    -0.0030     -0.0124    0.0437     0.0284   -0.0154 -0.0093   -0.0130        0.0518       -0.0065          0.7776
+        3  0–.05     1.0000 0.0500     0.0102      0.0767    -0.0398      0.0267    0.0398     0.0267   -0.0131  0.0665       NaN        0.0102       -0.0398          1.0000
+       4+  0–.05        NaN    NaN        NaN         NaN        NaN         NaN       NaN        NaN       NaN     NaN       NaN           NaN           NaN             NaN
+building poster figures -> /home/sux002/work/cis_heritability/poster/figures
+  wrote figures/P1_polygenicity.png
+  wrote figures/P2_win_landscape.png
+  wrote figures/P3_sample_size.png
+  wrote figures/P4_architecture.png
+  wrote figures/P5_gtex_sample_size.png
+  wrote figures/P6_gtex_architecture.png
+  wrote figures/P7_reliability.png
+  wrote figures/P0_workflow.png
+  wrote figures/P1_bias_only.png
+  wrote figures/P5_agreement.png
+  wrote figures/P6_strata_compare.png
+  wrote figures/P7_reliability_sets.png
+  wrote figures/P3_sample_size_r4.png
+  wrote figures/P3_sample_size_r4_A3_rejected.png
+  wrote figures/P6_better_or_different.png
+done
+round 4: 968 words in the columns (round 3: 864)
+
+  !! QR code still points at a placeholder (https://github.com/).
+     Set QR_URL and QR_URL_TEXT, regenerate figures/qr.png, and
+     re-run before printing. The URL line is hidden until then.
+
+
+sheet 36 x 48 in   column width 11.07 in   body 9.95–47.40 in
+  column 1: 13 blocks, ends at 44.06 in, slack +3.34 in   [OK ]
+  column 2: 11 blocks, ends at 48.49 in, slack -1.09 in   [OVERFLOW]
+  column 3: 13 blocks, ends at 48.92 in, slack -1.52 in   [OVERFLOW]
+wrote XuS_IGVF2026_poster_round4.pptx
+wrote poster_proof_round4.png
+layout overflows the sheet - shorten a column

@@ -1,10 +1,9 @@
-PLINK_PATH=$1
-GENO_PREFIX=$2
-TMPDIR=$3
-CURRENT_DATE=$4
+GENO_PREFIX=$1
+TMPDIR=$2
+CURRENT_DATE=$3
 
 
-python simulations.py --plink_path $PLINK_PATH \
+python simulations_test.py \
   --geno_prefix $GENO_PREFIX \
   --tmpdir $TMPDIR \
   --current_date $CURRENT_DATE \

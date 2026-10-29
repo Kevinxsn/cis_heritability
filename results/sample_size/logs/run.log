@@ -1,0 +1,56 @@
+2026-08-17 11:27:22 INFO    campaign sample_size (fingerprint f4e6bab90c82)
+2026-08-17 11:27:22 INFO    grid: 150 cells/region x 50 regions = 7500 cells | 0 already done, 50 to run
+2026-08-17 11:27:22 INFO    workers=48 threads/worker=1 scratch=/data/tmp/cish2-sample_size-sux002 (3857 GB free)
+2026-08-17 11:27:22 INFO    bim index ready for 22 chromosomes
+2026-08-17 11:53:10 INFO    [1/50] slot 46 ok in 1547.0s | 150 rows | 25.8 min elapsed, ETA 1263.7 min
+2026-08-17 11:57:03 INFO    [2/50] slot 26 ok in 1780.4s | 300 rows | 29.7 min elapsed, ETA 712.4 min
+2026-08-17 11:59:46 INFO    [3/50] slot 12 ok in 1943.8s | 450 rows | 32.4 min elapsed, ETA 507.6 min
+2026-08-17 12:03:30 INFO    [4/50] slot 14 ok in 2167.3s | 600 rows | 36.1 min elapsed, ETA 415.5 min
+2026-08-17 12:05:03 INFO    [5/50] slot 43 ok in 2260.6s | 750 rows | 37.7 min elapsed, ETA 339.1 min
+2026-08-17 12:05:15 INFO    [6/50] slot 10 ok in 2272.1s | 900 rows | 37.9 min elapsed, ETA 277.7 min
+2026-08-17 12:05:34 INFO    [7/50] slot 27 ok in 2291.6s | 1050 rows | 38.2 min elapsed, ETA 234.7 min
+2026-08-17 12:05:57 INFO    [8/50] slot 19 ok in 2314.7s | 1200 rows | 38.6 min elapsed, ETA 202.6 min
+2026-08-17 12:08:21 INFO    [9/50] slot 1 ok in 2457.8s | 1350 rows | 41.0 min elapsed, ETA 186.7 min
+2026-08-17 12:08:49 INFO    [10/50] slot 38 ok in 2486.0s | 1500 rows | 41.4 min elapsed, ETA 165.8 min
+2026-08-17 12:11:29 INFO    [11/50] slot 13 ok in 2645.9s | 1650 rows | 44.1 min elapsed, ETA 156.4 min
+2026-08-17 12:11:44 INFO    [12/50] slot 40 ok in 2661.0s | 1800 rows | 44.4 min elapsed, ETA 140.5 min
+2026-08-17 12:12:54 INFO    [13/50] slot 20 ok in 2731.3s | 1950 rows | 45.5 min elapsed, ETA 129.6 min
+2026-08-17 12:13:51 INFO    [14/50] slot 32 ok in 2788.6s | 2100 rows | 46.5 min elapsed, ETA 119.5 min
+2026-08-17 12:14:40 INFO    [15/50] slot 30 ok in 2836.9s | 2250 rows | 47.3 min elapsed, ETA 110.3 min
+2026-08-17 12:14:45 INFO    [16/50] slot 33 ok in 2842.8s | 2400 rows | 47.4 min elapsed, ETA 100.7 min
+2026-08-17 12:15:07 INFO    [17/50] slot 0 ok in 2864.4s | 2550 rows | 47.7 min elapsed, ETA 92.7 min
+2026-08-17 12:15:54 INFO    [18/50] slot 2 ok in 2911.4s | 2700 rows | 48.5 min elapsed, ETA 86.3 min
+2026-08-17 12:16:21 INFO    [19/50] slot 35 ok in 2938.0s | 2850 rows | 49.0 min elapsed, ETA 79.9 min
+2026-08-17 12:16:30 INFO    [20/50] slot 4 ok in 2947.3s | 3000 rows | 49.1 min elapsed, ETA 73.7 min
+2026-08-17 12:16:43 INFO    [21/50] slot 11 ok in 2960.4s | 3150 rows | 49.3 min elapsed, ETA 68.1 min
+2026-08-17 12:17:25 INFO    [22/50] slot 6 ok in 3002.1s | 3300 rows | 50.0 min elapsed, ETA 63.7 min
+2026-08-17 12:17:37 INFO    [23/50] slot 7 ok in 3013.9s | 3450 rows | 50.2 min elapsed, ETA 59.0 min
+2026-08-17 12:17:48 INFO    [24/50] slot 39 ok in 3025.7s | 3600 rows | 50.4 min elapsed, ETA 54.6 min
+2026-08-17 12:19:25 INFO    [25/50] slot 24 ok in 3122.2s | 3750 rows | 52.0 min elapsed, ETA 52.0 min
+2026-08-17 12:19:29 INFO    [26/50] slot 15 ok in 3126.9s | 3900 rows | 52.1 min elapsed, ETA 48.1 min
+2026-08-17 12:20:28 INFO    [27/50] slot 3 ok in 3185.8s | 4050 rows | 53.1 min elapsed, ETA 45.2 min
+2026-08-17 12:22:00 INFO    [28/50] slot 28 ok in 3277.4s | 4200 rows | 54.6 min elapsed, ETA 42.9 min
+2026-08-17 12:22:19 INFO    [29/50] slot 17 ok in 3296.1s | 4350 rows | 54.9 min elapsed, ETA 39.8 min
+2026-08-17 12:22:30 INFO    [30/50] slot 42 ok in 3307.2s | 4500 rows | 55.1 min elapsed, ETA 36.7 min
+2026-08-17 12:22:51 INFO    [31/50] slot 5 ok in 3328.5s | 4650 rows | 55.5 min elapsed, ETA 34.0 min
+2026-08-17 12:23:12 INFO    [32/50] slot 25 ok in 3349.0s | 4800 rows | 55.8 min elapsed, ETA 31.4 min
+2026-08-17 12:24:44 INFO    [33/50] slot 8 ok in 3441.9s | 4950 rows | 57.4 min elapsed, ETA 29.6 min
+2026-08-17 12:25:07 INFO    [34/50] slot 9 ok in 3464.2s | 5100 rows | 57.7 min elapsed, ETA 27.2 min
+2026-08-17 12:25:10 INFO    [35/50] slot 41 ok in 3467.9s | 5250 rows | 57.8 min elapsed, ETA 24.8 min
+2026-08-17 12:25:39 INFO    [36/50] slot 36 ok in 3496.3s | 5400 rows | 58.3 min elapsed, ETA 22.7 min
+2026-08-17 12:27:40 INFO    [37/50] slot 34 ok in 3617.3s | 5550 rows | 60.3 min elapsed, ETA 21.2 min
+2026-08-17 12:27:51 INFO    [38/50] slot 29 ok in 3628.7s | 5700 rows | 60.5 min elapsed, ETA 19.1 min
+2026-08-17 12:29:57 INFO    [39/50] slot 16 ok in 3754.8s | 5850 rows | 62.6 min elapsed, ETA 17.7 min
+2026-08-17 12:31:33 INFO    [40/50] slot 45 ok in 3850.9s | 6000 rows | 64.2 min elapsed, ETA 16.0 min
+2026-08-17 12:33:53 INFO    [41/50] slot 49 ok in 2210.1s | 6150 rows | 66.5 min elapsed, ETA 14.6 min
+2026-08-17 12:34:09 INFO    [42/50] slot 31 ok in 4006.7s | 6300 rows | 66.8 min elapsed, ETA 12.7 min
+2026-08-17 12:36:52 INFO    [43/50] slot 22 ok in 4169.5s | 6450 rows | 69.5 min elapsed, ETA 11.3 min
+2026-08-17 12:37:20 INFO    [44/50] slot 44 ok in 4197.4s | 6600 rows | 70.0 min elapsed, ETA 9.5 min
+2026-08-17 12:37:33 INFO    [45/50] slot 48 ok in 2663.6s | 6750 rows | 70.2 min elapsed, ETA 7.8 min
+2026-08-17 12:41:07 INFO    [46/50] slot 47 ok in 4424.1s | 6900 rows | 73.7 min elapsed, ETA 6.4 min
+2026-08-17 12:44:44 INFO    [47/50] slot 21 ok in 4640.7s | 7050 rows | 77.4 min elapsed, ETA 4.9 min
+2026-08-17 12:44:55 INFO    [48/50] slot 23 ok in 4651.9s | 7200 rows | 77.5 min elapsed, ETA 3.2 min
+2026-08-17 13:01:30 INFO    [49/50] slot 37 ok in 5647.4s | 7350 rows | 94.1 min elapsed, ETA 1.9 min
+2026-08-17 13:10:50 INFO    [50/50] slot 18 ok in 6207.1s | 7500 rows | 103.5 min elapsed, ETA 0.0 min
+2026-08-17 13:10:50 INFO    done: 50 regions ok, 0 failed, 7500 rows in 103.5 min
+2026-08-17 13:10:52 INFO    consolidated -> /projects/ps-renlab2/sux002/cis_heritability/results/sample_size/cells.tsv.gz
